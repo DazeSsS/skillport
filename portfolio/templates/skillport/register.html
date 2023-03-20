@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    
+    <h1>Register</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <p>
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Username...">
+        </p>
+        <p>
+            <label>Email</label>
+            <input type="text" name="email" placeholder="Email...">
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password1" placeholder="Password...">
+        </p>
+        <p>
+            <label>Password confirmation</label>
+            <input type="password" name="password2" placeholder="Re-enter Password...">
+        </p>
+
+        <p style="background-color: #fb0707;">{{ form.errors }}</p> 
+
+        <button type="submit">Register Account</button>
+    </form>
+
+    <p>
+        Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+    </p>
+
+    <h2><a href="{% url 'home' %}">Home Page</a></h2>
+
+</body>
+</html>
+
