@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Основа для страницы фида</h1>
+<table>
+    <tr>
+        <th>Проект</th>
+        <th>Создан</th>
+        <th>Ссылка</th>
+    </tr>
+    {%for project in projects %}
+        <tr>
+            <td>{{project.title}} | </td>
+            <td>{{project.date}} | </td>
+            <td><a href="{% url 'project' project.id %}">Просмотреть</a></td>
+        </tr>
+        </tr>
+    {% endfor %}
+
+{% endblock content %}

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import Project
+from .forms import ProjectForm
 
 # my views
 from .forms import CreateUserForm
@@ -57,3 +59,27 @@ def logout_user(request):
 
 def index_page(request):
     return render(request, 'skillport/index.html')
+
+
+def feed_page(request):
+    projects = Project.objects.all()
+    context = {'projects': projects }
+    return render(request, 'skillport/feed.html', context)
+
+
+def project(request, pk):
+    project = Project.objects.get(id = pk)
+    tags =  project.tags.all()
+    context = {'project': project, 'tags': tags}
+    return render(request, 'skillport/single_project.html', context)
+
+
+def create_project(request):
+    form = ProjectForm()
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('projects')
+    context = {'form': form}
+    return render(request, 'skillport/project_form.html', context)
