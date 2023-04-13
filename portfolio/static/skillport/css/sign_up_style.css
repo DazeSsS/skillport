@@ -1,0 +1,248 @@
+body {
+    color: #615C5C;
+    font-family: 'PT Serif', serif;
+    font-size: 20px;
+    margin: 0 auto;
+    background-color: #282323;
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.register__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: #C2B3A2;
+    border-radius: 30px;
+    margin-top: 110px;
+}
+
+.form__title__1{
+    display: flex;
+    justify-content: center;
+    color: #887157;
+    font-style: normal;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+    gap: 20px;
+    padding: 0 43px;
+}
+
+.line{
+    height: 2px;
+    background: #887157;
+    flex-grow: 1;
+}
+
+.main__information{
+    display: flex;
+    gap: 100px;
+}
+
+.logo{
+    border-radius: 30px;
+    margin-left: 45px;
+}
+
+.main__content{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: normal;
+    margin-left: 10px;
+    color: #282323;
+}
+
+.login{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 400px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.email{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 400px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.password{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 400px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.form__title__2{
+    display: flex;
+    justify-content: center;
+    color: #887157;
+    font-style: normal;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    align-items: center;
+    gap: 20px;
+    padding: 0 43px;
+}
+
+.other__information{
+    display: flex;
+    gap: 50px;
+}
+
+.other__content{
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    font-size: 20px;
+    font-weight: normal;
+    margin-left: 55px;
+    color: #282323;
+}
+
+.surname__name__h{
+    display: flex;
+    gap: 60px;
+}
+
+tittle__1{
+    font-size: 20px;
+    margin-left: 55px;
+    color: #282323; 
+}
+
+.surname__name{
+    display: flex;
+}
+
+.surname{
+    border: 2px solid #887157;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background: #C2B3A2;
+    width: 198px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-left: 45px;
+}
+
+.name{
+    border: 2px solid #887157;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: #C2B3A2;
+    width: 198px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-left: 4px;
+}
+
+.specialization{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 400px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-left: 45px;
+}
+
+.links{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 400px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-left: 45px;
+}
+
+.user__setting{
+    display: flex;
+    gap: 10px;
+}
+
+.contract{
+    border: 2px solid #887157;
+    background: #C2B3A2;
+    margin-top: 65px;
+    margin-left: 50px;
+    height: 100%;
+    width: 100%;
+}
+
+tittle__2{
+    font-size: 20px;
+    color: #282323;
+    margin-top: 63px;
+}
+
+.register{
+    border-radius: 30px;
+    background: #BB5C5C;
+    width: 200px;
+    height: 35px;
+    margin-top: 17px;
+    margin-left: 120px;
+    font-size: 17px;
+    color: #CCCCCC;
+    align-items: center;
+}
+
+.about{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 873px;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    margin-left: 45px;
+}
+
+.avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: 2px solid #887157;
+}

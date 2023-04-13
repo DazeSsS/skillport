@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'skillport/css/sign_up_style.css' %}" type="text/css">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <div class="register__form"> 
+                <div class="form__title__1">
+                    <div class="line"></div>
+                    <div>Регистрация</div>
+                    <div class="line"></div>
+                </div>
+
+                <div class="main__information">
+                    <img src="https://placehold.it/375x300" alt="" class="logo">
+                    <div class="main__content">
+                        <h1>Ваш логин</h1>
+                        <input type="text" class="login">
+                        <h1>Электронная почта</h1>
+                        <input type="text" class="email">
+                        <h1>Пароль</h1>
+                        <input type="text" class="password">
+                        <h1>Повторите пароль</h1>
+                        <input type="text" class="password">
+                    </div>
+                </div> 
+                
+                <div class="form__title__2">
+                    <div class="line"></div>
+                    <div>Дополнительная информация</div>
+                    <div class="line"></div>
+                </div>
+
+                <div class="other__information">
+                    <div class="other__content">
+                        <div class="surname__name__h">
+                            <tittle__1>Фамилия</tittle__1>
+                            <tittle__1>Имя</tittle__1>
+                        </div>
+                        <div class="surname__name">
+                            <input type="text" class="surname">
+                            <input type="text" class="name">
+                        </div>
+                        <h2>Специализация</h2>
+                        <input type="text" class="specialization">
+                        <h2>Ссылки на соцсети</h2>
+                        <input type="text" class="links">
+                    </div>
+                    <div class="create">
+                        <div class="user__setting">
+                            <img src="https://placehold.it/150x150" alt="" class="avatar">
+                            <button class="contract">✔</button>
+                            <tittle__2>Соглашаюсь</tittle__2>
+                        </div>
+                        <button class="register">Зарегистрироваться</button>
+                    </div>
+                </div>
+                <div class="about__me">
+                    <h2>Напишите немного о себе</h2> 
+                    <input type="text" class="about">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

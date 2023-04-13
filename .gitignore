@@ -2,4 +2,3 @@ venv
 env
 portfolio/db.sqlite3
 **/__pycache__
-db.sqlite3

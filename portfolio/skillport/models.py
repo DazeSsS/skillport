@@ -9,7 +9,6 @@ class Project(models.Model):
     tags = models.ManyToManyField('Tag', blank=True)
     date = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, primary_key=True)
-    #comments = models.
 
     def __str__(self):
         return self.title

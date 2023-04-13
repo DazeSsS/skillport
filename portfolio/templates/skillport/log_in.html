@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'skillport/css/log_in_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    <div class="container">
+        <div class="log_in__form">
+            <div class="form__tittle">
+                <div class="line"></div>
+                <div>Вход</div>
+                <div class="line"></div>
+            </div>
+
+            <div class="main__information">
+                <div class="main__content">
+                    <h>Логин/Почта</h>
+                    <input type="text" class="login">
+                    <h>Пароль</h>
+                    <input type="text" class="password">
+                </div>
+            </div>
+
+            <div class="log_in__button">
+                <button class="log_in">Войти</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

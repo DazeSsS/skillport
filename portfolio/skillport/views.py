@@ -27,7 +27,7 @@ def register_page(request):
                 return redirect('login')
 
         context = {'form': form}
-        return render(request, 'skillport/register.html', context)
+        return render(request, 'skillport/sign_up.html', context)
 
 
 def login_page(request):
@@ -46,10 +46,10 @@ def login_page(request):
                 return redirect('home')
             else:
                 messages.info(request, 'Username or password is incorrect')
-                return render(request, 'skillport/login.html')
+                return render(request, 'skillport/log_in.html')
 
         context = {}
-        return render(request, 'skillport/login.html', context)
+        return render(request, 'skillport/log_in.html', context)
 
 
 def logout_user(request):
