@@ -15,60 +15,60 @@
     <form action="" method="POST">
         {% csrf_token %}
         <div class="container">
-            <div class="register__form"> 
-                <div class="form__title__1">
+            <div class="register-form"> 
+                <div class="form-title-1">
                     <div class="line"></div>
                     <div>Регистрация</div>
                     <div class="line"></div>
                 </div>
 
-                <div class="main__information">
+                <div class="main-information">
                     <img src="https://placehold.it/375x300" alt="" class="logo">
-                    <div class="main__content">
+                    <div class="main-content">
                         <h1>Ваш логин</h1>
-                        <input type="text" class="login">
+                        <input type="text" name="username" class="login">
                         <h1>Электронная почта</h1>
-                        <input type="text" class="email">
+                        <input type="text" name="email" class="email">
                         <h1>Пароль</h1>
-                        <input type="text" class="password">
+                        <input type="password" name="password1" class="password">
                         <h1>Повторите пароль</h1>
-                        <input type="text" class="password">
+                        <input type="password" name="password2" class="password">
                     </div>
                 </div> 
                 
-                <div class="form__title__2">
+                <div class="form-title-2">
                     <div class="line"></div>
                     <div>Дополнительная информация</div>
                     <div class="line"></div>
                 </div>
 
-                <div class="other__information">
-                    <div class="other__content">
-                        <div class="surname__name__h">
-                            <tittle__1>Фамилия</tittle__1>
-                            <tittle__1>Имя</tittle__1>
+                <div class="other-information">
+                    <div class="other-content">
+                        <div class="surname-name-h">
+                            <title_1>Фамилия</title_1>
+                            <title_1>Имя</title_1>
                         </div>
-                        <div class="surname__name">
-                            <input type="text" class="surname">
-                            <input type="text" class="name">
+                        <div class="surname-name">
+                            <input type="text" name="surname" class="surname">
+                            <input type="text" name="name" class="name">
                         </div>
                         <h2>Специализация</h2>
-                        <input type="text" class="specialization">
+                        <input type="text" name="specialization" class="specialization">
                         <h2>Ссылки на соцсети</h2>
-                        <input type="text" class="links">
+                        <input type="text" name="links" class="links">
                     </div>
                     <div class="create">
-                        <div class="user__setting">
+                        <div class="user-setting">
                             <img src="https://placehold.it/150x150" alt="" class="avatar">
                             <button class="contract">✔</button>
-                            <tittle__2>Соглашаюсь</tittle__2>
+                            <title_2>Соглашаюсь</title_2>
                         </div>
-                        <button class="register">Зарегистрироваться</button>
+                        <button class="register" type="submit">Зарегистрироваться</button>
                     </div>
                 </div>
-                <div class="about__me">
+                <div class="about-me">
                     <h2>Напишите немного о себе</h2> 
-                    <input type="text" class="about">
+                    <input type="text" name="about" class="about">
                 </div>
             </div>
         </div>
