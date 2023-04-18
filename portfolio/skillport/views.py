@@ -1,55 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from .models import Project
-from .forms import ProjectForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-# my views
+from .models import Project
 from .forms import CreateUserForm
 
 
-def register_page(request):
-
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        form = CreateUserForm()
-
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Accout was created for ' + user)
-
-                return redirect('login')
-
-        context = {'form': form}
-        return render(request, 'skillport/sign_up.html', context)
+class RegisterUser(CreateView):
+    form_class = CreateUserForm
+    template_name = 'skillport/sign_up.html'
+    success_url = reverse_lazy('login')
 
 
-def login_page(request):
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'skillport/log_in.html'
 
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.info(request, 'Username or password is incorrect')
-                return render(request, 'skillport/log_in.html')
-
-        context = {}
-        return render(request, 'skillport/log_in.html', context)
+    def get_success_url(self):
+        return reverse_lazy('home')
 
 
 def logout_user(request):

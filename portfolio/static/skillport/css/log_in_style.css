@@ -24,7 +24,7 @@ body {
     margin: 0 auto;
 }
 
-.log-in-form {
+.log__in__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +35,7 @@ body {
     margin-top: 120px;
 }
 
-.form-tittle {
+.form__tittle {
     display: flex;
     justify-content: center;
     color: #887157;
@@ -55,12 +55,12 @@ body {
     flex-grow: 1;
 }
 
-.main-information {
+.main__information {
     display: flex;
     justify-content: center;
 }
 
-.main-content {
+.main__content {
     display: flex;
     flex-direction: column;
     margin-top: 100px;
@@ -94,24 +94,28 @@ h {
     margin-bottom: 3px;
 }
 
-.log-in-button {
+.log__in__button {
     display: flex;
     justify-content: center;
     margin-top: 168px;
     margin-bottom: 67px;
 }
 
-.log-in {
+.log__in {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 30px;
-    background: #BB5C5C;
+    background: #bd5151;
+    color: #CCCCCC;
     width: 341px;
     height: 62px;
     font-style: normal;
     font-weight: 400;
     font-size: 28px;
-    color: #CCCCCC;
-    align-items: center;
+    cursor: pointer;
+}
+
+.log__in:hover {
+    background: #d64444;
 }

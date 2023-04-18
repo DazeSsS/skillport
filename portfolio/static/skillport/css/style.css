@@ -1,0 +1,273 @@
+html {
+  font-size: 20px;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #615C5C;
+  font-family: 'PT Serif', serif;
+  font-size: 20px;
+  margin: 0;
+  background-color: #282323;
+}
+
+.intro {
+  width: 200px;
+  height: 200px;
+  background-color: #C2B3A2;
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 24px 0;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+}
+
+.user__avatar {
+  width: 110px;
+  height: 110px;
+}
+
+.user__avatar img {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav__auth-btns {
+  position: relative;
+  background: #C2B3A1;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.nav__auth-btns::after {
+  content: '';
+  background: #282323;
+  width: 8px;
+  height: 70px;
+  position: absolute;
+  top: -10px;
+  transform: rotate(27deg);
+  right: 51%;
+}
+
+.nav__link {
+  display: flex;
+  padding-right: 22px;
+  text-decoration: none;
+}
+
+.nav__link img {
+  border: 2px solid transparent;
+  border-radius: 30px;
+}
+
+.nav__link img:hover {
+  border-color: #887157;
+}
+
+.button {
+  display: flex;
+  cursor: pointer;
+  transition: .1s linear;
+}
+
+.button__header__1 {
+  align-items: center;
+  display: flex;
+  height: 42px;
+  padding-left: 20px;
+  background: none;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  border: 2px solid transparent;
+  font-size: 20px;
+}
+
+.button__header__2 {
+  align-items: center;
+  display: flex;
+  height: 42px;
+  padding-right: 20px;
+  background: none;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  border: 2px solid transparent;
+  font-size: 20px;
+}
+
+.separator {
+  align-items: center;
+  background: #282323;
+  height: 80px;
+  width: 8px;
+}
+
+.works {
+  padding-top: 96px;
+}
+
+.nav-links {
+  padding: 21px;
+  margin: 0 100px;
+  margin-bottom: 96px;
+  background: #887157;
+  border-radius: 30px;
+}
+
+.nav-links__links-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 23px;
+}
+
+.nav-links__button {
+  font-family: 'PT Serif';
+  padding: 8px 0;
+  flex-basis: 25%;
+
+  background: none;
+  outline: none;
+  border: 0;
+
+  font-size: 20px;
+  font-weight: 400;
+  color: #615C5C;
+
+  background: #C2B3A2;
+  border-radius: 30px;
+
+  cursor: pointer;
+}
+
+.nav-links__button>img {
+  width: 16px;
+}
+
+#input-nav {
+  width: 100%;
+  outline: none;
+  border-radius: 20px;
+  border: 0;
+  background: #C2B3A2;
+  padding: 8px 23px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'PT Serif';
+  color: #615C5C;
+}
+
+.works__nav__link {
+  font-size: 20px;
+  color: #615C5C;
+  text-decoration: none;
+  background: #C2B3A2;
+  border-radius: 30px;
+}
+
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.portfolio__col {
+  width: 278px;
+  height: 364px;
+  background: #C2B3A2;
+  border-radius: 30px;
+  color: aliceblue;
+  padding: 16px 16px;
+  margin: 0 21px;
+  transition: box-shadow .2s linear;
+}
+
+.portfolio__col:hover{
+  box-shadow: 0 0 25px;
+  color: #000 25%;
+}
+
+.work__image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.work__title{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    width: 180px;
+    height: 42px;
+}
+
+.work__favorites{
+  border: 2px solid #887157;
+  border-radius: 30px;
+}
+
+.work__content{
+  display: flex;
+  gap: 20px;
+  padding-top: 30px;
+}
+
+.footer__logo{
+  width: 45px;
+  height: 45px;
+}
+
+.footer__logo img {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.footer__content{
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-top: 52px;
+}
+
+.footer__link{
+  display: flex;
+  align-items: center;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}

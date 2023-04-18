@@ -1,5 +1,5 @@
+{% load static %}
 <!DOCTYPE html>
-{%load static%}
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -8,23 +8,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'skillport/css/sign_up_style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'skillport/css/sign_up_style.css' %}">
     <title>Registration</title>
 </head>
 <body>
     <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}
         <div class="container">
-            <div class="register-form"> 
-                <div class="form-title-1">
+            <div class="register__form"> 
+                <div class="form__title__1">
                     <div class="line"></div>
                     <div>Регистрация</div>
                     <div class="line"></div>
                 </div>
 
-                <div class="main-information">
+                <div class="main__information">
                     <img src="https://placehold.it/375x300" alt="" class="logo">
-                    <div class="main-content">
+                    <div class="main__content">
                         <h1>Ваш логин</h1>
                         {{ form.username }}
                         <h1>Электронная почта</h1>
@@ -36,29 +36,29 @@
                     </div>
                 </div> 
                 
-                <div class="form-title-2">
+                <div class="form__title__2">
                     <div class="line"></div>
                     <div>Дополнительная информация</div>
                     <div class="line"></div>
                 </div>
 
-                <div class="other-information">
-                    <div class="other-content">
-                        <div class="surname-name-h">
+                <div class="other__information">
+                    <div class="other__content">
+                        <div class="surname__name__h">
                             <title_1>Фамилия</title_1>
                             <title_1>Имя</title_1>
                         </div>
-                        <div class="surname-name">
-                            <input type="text" name="surname" class="surname">
-                            <input type="text" name="name" class="name">
+                        <div class="surname__name">
+                            {{ form.last_name }}
+                            {{ form.first_name }}
                         </div>
                         <h2>Специализация</h2>
-                        <input type="text" name="specialization" class="specialization">
+                        {{ form.specialization }}
                         <h2>Ссылки на соцсети</h2>
-                        <input type="text" name="links" class="links">
+                        {{ form.links }}
                     </div>
                     <div class="create">
-                        <div class="user-setting">
+                        <div class="user__setting">
                             <img src="https://placehold.it/150x150" alt="" class="avatar">
                             <button class="contract">✔</button>
                             <title_2>Соглашаюсь</title_2>
@@ -66,9 +66,9 @@
                         <button class="register" type="submit">Зарегистрироваться</button>
                     </div>
                 </div>
-                <div class="about-me">
+                <div class="about__me">
                     <h2>Напишите немного о себе</h2> 
-                    <input type="text" name="about" class="about">
+                    {{ form.about }}
                 </div>
             </div>
         </div>

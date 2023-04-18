@@ -1,10 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
 import uuid
+
+
+class Person(AbstractUser):
+    specialization = models.CharField(max_length=100, blank=True)
+    links = models.CharField(max_length=100, blank=True)
+    about = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.username
 
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)
+    description = models.TextField(blank=True)
     image = models.ImageField(null=True, blank=True, default=None)
     tags = models.ManyToManyField('Tag', blank=True)
     date = models.DateTimeField(auto_now_add=True)

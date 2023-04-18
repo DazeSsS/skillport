@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -15,15 +15,15 @@
     <form action="" method="POST">
         {% csrf_token %}
         <div class="container">
-            <div class="log-in-form">
-                <div class="form-tittle">
+            <div class="log__in__form">
+                <div class="form__tittle">
                     <div class="line"></div>
                     <div>Вход</div>
                     <div class="line"></div>
                 </div>
 
-                <div class="main-information">
-                    <div class="main-content">
+                <div class="main__information">
+                    <div class="main__content">
                         <h>Логин</h>
                         <input type="text" name="username" class="login">
                         <h>Пароль</h>
@@ -31,8 +31,8 @@
                     </div>
                 </div>
 
-                <div class="log-in-button">
-                    <button class="log-in" type="submit">Войти</button>
+                <div class="log__in__button">
+                    <button class="log__in" type="submit">Войти</button>
                 </div>
             </div>
         </div>

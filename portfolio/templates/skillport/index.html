@@ -1,14 +1,137 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'skillport/css/style.css' %}">
+    <title>SkillPort</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="user">
+                    <div class="user__avatar">
+                        <a href="{% url 'home' %}"> 
+                            <img src="{% static 'skillport/img/logo.jpg' %}" alt="logo">
+                        </a>
+                    </div>
+                </div>
 
-{% block content %}
-    <h1>Hello, {{ request.user }}!
-        {% if request.user.is_authenticated %}
-        <a href="{% url 'logout' %}"> | Logout</a>
-        {% endif %}
-    </h1>
-    <h2>
-        {% if not request.user.is_authenticated %}
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
-        {% endif %} 
-    </h2>
-{% endblock %}
+                <nav class="nav">
+                    <a href="#" class="nav__link">
+                        <img src="{% static 'skillport/img/favorites.png' %}" alt="">
+                    </a>
+                    <a href="#" class="nav__link">
+                        <img src="{% static 'skillport/img/profile.png' %}" alt="">
+                    </a>
+                    {% if not request.user.is_authenticated %}
+                        <div class="nav__auth-btns">
+                            <form action="{% url 'login' %}">
+                                <button class="button button__header__1">Log In</button>
+                            </form>
+                            <!-- <div class="separator"></div> -->
+                            <form action="{% url 'register' %}">
+                                <button class="button button__header__2">Sign Up</button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <p>{{ request.user }} | 
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </p>
+                    {% endif %}
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="works">
+        <div class="container">
+            <div class="nav-links">
+                <div class="nav-links__links-wrapper">
+                    <button class="nav-links__button">Изображения/Видео</button>
+                    <button class="nav-links__button">Аудио</button>
+                    <button class="nav-links__button">Текст</button>
+                    <button class="nav-links__button">Найти <img src="{% static 'skillport/img/search-icon.png' %}"
+                            alt="search-icon"></button>
+                </div>
+                <div class="nav-links__input-wrapper">
+                    <input type="text" name="input-nav" id="input-nav" placeholder="Поиск...">
+                </div>
+            </div>
+
+            <div class="portfolio">
+
+                <div class="portfolio__col">
+                    <div class="work">
+                        <img src="https://placehold.it/272x272" alt="" class="work__image">
+                        <div class="work__content">
+                            <div class="work__title">
+                                
+                            </div>
+                            <img src="{% static 'skillport/img/favorites.png' %}" alt="" class="work__favorites">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio__col">
+                    <div class="work">
+                        <img src="https://placehold.it/272x272" alt="" class="work__image">
+                        <div class="work__content">
+                            <div class="work__title">
+                                
+                            </div>
+                            <img src="{% static 'skillport/img/favorites.png' %}" alt="" class="work__favorites">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio__col">
+                    <div class="work">
+                        <img src="https://placehold.it/272x272" alt="" class="work__image">
+                        <div class="work__content">
+                            <div class="work__title">
+                                
+                            </div>
+                            <img src="{% static 'skillport/img/favorites.png' %}" alt="" class="work__favorites">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio__col">
+                    <div class="work">
+                        <img src="https://placehold.it/272x272" alt="" class="work__image">
+                        <div class="work__content">
+                            <div class="work__title">
+                                
+                            </div>
+                            <img src="{% static 'skillport/img/favorites.png' %}" alt="" class="work__favorites">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__link">
+                    https://vk.com/kegab00m
+                </div>
+                <div class="footer__logo">
+                    <img src="{% static 'skillport/img/logo.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -24,7 +24,7 @@ body {
     margin: 0 auto;
 }
 
-.register-form {
+.register__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +35,7 @@ body {
     margin-top: 110px;
 }
 
-.form-title-1 {
+.form__title__1 {
     display: flex;
     justify-content: center;
     color: #887157;
@@ -54,7 +54,7 @@ body {
     flex-grow: 1;
 }
 
-.main-information {
+.main__information {
     display: flex;
     gap: 100px;
 }
@@ -64,7 +64,7 @@ body {
     margin-left: 45px;
 }
 
-.main-content {
+.main__content {
     display: flex;
     flex-direction: column;
 }
@@ -106,7 +106,7 @@ h1 {
     margin-bottom: 3px;
 }
 
-.form-title-2 {
+.form__title__2 {
     display: flex;
     justify-content: center;
     color: #887157;
@@ -119,12 +119,12 @@ h1 {
     padding: 0 43px;
 }
 
-.other-information {
+.other__information {
     display: flex;
     gap: 50px;
 }
 
-.other-content {
+.other__content {
     display: flex;
     flex-direction: column;
 }
@@ -136,7 +136,7 @@ h2 {
     color: #282323;
 }
 
-.surname-name-h {
+.surname__name__h {
     display: flex;
     gap: 60px;
 }
@@ -147,7 +147,7 @@ title_1 {
     color: #282323; 
 }
 
-.surname-name {
+.surname__name {
     display: flex;
 }
 
@@ -197,7 +197,7 @@ title_1 {
     margin-left: 45px;
 }
 
-.user-setting {
+.user__setting {
     display: flex;
     gap: 10px;
 }
@@ -219,7 +219,7 @@ title_2 {
 
 .register {
     border-radius: 30px;
-    background: #BB5C5C;
+    background: #bd5151;
     width: 200px;
     height: 35px;
     margin-top: 17px;
@@ -227,6 +227,11 @@ title_2 {
     font-size: 17px;
     color: #CCCCCC;
     align-items: center;
+    cursor: pointer;
+}
+
+.register:hover {
+    background: #d64444;
 }
 
 .about {
