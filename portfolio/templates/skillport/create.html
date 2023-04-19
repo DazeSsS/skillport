@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'skillport/css/create.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="create-form">
+                <div class="naming">
+                    <div class="line"></div>
+                    <label>Создание проекта</label>
+                    <div class="line"></div>
+                </div>
+                <div class="switch-buttons">
+                    {{ form.content_type }}
+                    <!-- тут нужно стилизоваь тег select
+                    <button class="">Изображения/Видео</button>
+                    <button class="">Аудио</button>
+                    <button class="">Текст</button> -->
+                </div>
+                <div class="create-inner">
+                    <div class="create-gallery">
+                        <button><img src="https://placehold.it/592x592" alt="" class=""></button>
+                        <div class="lil-gallery">
+                            <img src="https://placehold.it/136x136" alt="" class="">
+                            <img src="https://placehold.it/136x136" alt="" class="">
+                            <img src="https://placehold.it/136x136" alt="" class="">
+                            <img src="https://placehold.it/136x136" alt="" class="">
+                        </div>
+                    </div>
+                    <div class="create-info">
+                        <label class="">Название</label>
+                        {{ form.title }}
+                        <label class="">Описание</label>
+                        {{ form.description }}
+                    </div>
+                </div>
+                <div class="publish">
+                    <button class="" type="submit">Опубликовать</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

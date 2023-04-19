@@ -5,10 +5,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillPort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'skillport/css/style.css' %}">
+    {% block styles %}
+    {% endblock %}
+
+    <title>
+        {% block title %}
+            SkillPort
+        {% endblock %}
+    </title>
 </head>
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="user">
+                    <div class="user__avatar">
+                        <a href="{% url 'home' %}"> 
+                            <img src="{% static 'skillport/img/logo.jpg' %}" alt="logo">
+                        </a>
+                    </div>
+                </div>
+
+                <nav class="nav">
+                    <a href="#" class="nav__link">
+                        <img src="{% static 'skillport/img/favorites.png' %}" alt="">
+                    </a>
+                    {% if not request.user.is_authenticated %}
+                        <div class="nav__auth-btns">
+                            <form action="{% url 'login' %}">
+                                <button class="button button__header__1">Log In</button>
+                            </form>
+                            <!-- <div class="separator"></div> -->
+                            <form action="{% url 'register' %}">
+                                <button class="button button__header__2">Sign Up</button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'profile' %}" class="nav__link">
+                            <img src="{% static 'skillport/img/profile.png' %}" alt="">
+                        </a>
+                        <p>{{ request.user }} | 
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </p>
+                    {% endif %}
+                </nav>
+
+            </div>
+        </div>
+    </header>
     {% block content %}
     {% endblock %}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__link">
+                    https://vk.com/kegab00m
+                </div>
+                <div class="footer__logo">
+                    <img src="{% static 'skillport/img/logo.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

@@ -7,23 +7,30 @@ class CreateUserForm(UserCreationForm):
 
     class Meta:
         model = Person
-        fields = ('username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'specialization', 'links', 'about')
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'specialization', 'links', 'about']
     
     def __init__(self, *args, **kwargs):
-        super(CreateUserForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         
-        self.fields['username'].widget.attrs['class'] = 'login'
-        self.fields['email'].widget.attrs['class'] = 'email'
-        self.fields['password1'].widget.attrs['class'] = 'password'
-        self.fields['password2'].widget.attrs['class'] = 'password'
-        self.fields['last_name'].widget.attrs['class'] = 'surname'
-        self.fields['first_name'].widget.attrs['class'] = 'name'
-        self.fields['specialization'].widget.attrs['class'] = 'specialization'
-        self.fields['links'].widget.attrs['class'] = 'links'
-        self.fields['about'].widget.attrs['class'] = 'about'
+        self.fields['username'].widget.attrs.update({'class': 'login'})
+        self.fields['email'].widget.attrs.update({'class': 'email'})
+        self.fields['password1'].widget.attrs.update({'class': 'password'})
+        self.fields['password2'].widget.attrs.update({'class': 'password'})
+        self.fields['last_name'].widget.attrs.update({'class': 'surname'})
+        self.fields['first_name'].widget.attrs.update({'class': 'name'})
+        self.fields['specialization'].widget.attrs.update({'class': 'specialization'})
+        self.fields['links'].widget.attrs.update({'class': 'specialization'})
+        self.fields['about'].widget.attrs.update({'class': 'about'})
 
 
-class ProjectForm(ModelForm):
+class CreateProjectForm(ModelForm):
+
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ['title', 'description', 'content_type']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['title'].widget.attrs.update({'class': 'input name-input'})
+        self.fields['description'].widget.attrs.update({'class': 'input description-input'})

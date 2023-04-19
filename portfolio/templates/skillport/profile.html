@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'skillport/css/profile.css' %}">
+{% endblock %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="box">
+            <div class="user_box">
+                <div class="main_user_info">
+                    <img src="https://placehold.it/486x486" alt="" width="486px" height="486px">
+                    <div class="login">
+                        <div class="input_box_input">
+                            <input class='input_text_login'id="login" value="{{ request.user.username }}" placeholder="Логин">
+                            <button id="log_button" class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button>
+                        </div>
+                        <div class="user_info">
+                            <label>22 лайка</label>
+                            <label>0 подписчиков</label><br>
+                            <label>33 подписки</label>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="mail-contacts">
+                    
+                    <div class="mail">
+                        <h3>Электронная почта</h3>
+                        <div class="input_box">
+                            <div class="input">
+                                <input class="input_text" value="{{ request.user.email }}" placeholder="Почта">
+                                <div>
+                                    <button class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="password">
+                        <h3>Пароль</h3>
+                        <div class="input_box">
+                            <div class="input" >
+                                <input class="input_text" placeholder="Пароль">
+                                <div><button class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button></div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="surname_name">
+                        <div>
+                            <h3>Фамилия</h3>
+                            <div class="input_box_surname">
+                                <div class="input">
+                                    <input class="input_text_small" value="{{ request.user.last_name }}" placeholder="Фамилия">
+                                    <div><button class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Имя</h3>
+                            <div class="input_box_name">
+                                <input class="input_text_small" value="{{ request.user.first_name }}" placeholder="Имя">
+                                <button class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button>
+                            </div>
+                        </div>
+                        
+                    </div>
+        
+                    <div class="specialisation">
+                        <h3>Специализация</h3>
+                        <div class="input_box">
+                            <div class="input">
+                                <input class="input_text" value="{{ request.user.specialization }}" placeholder="Специализация">
+                                <div><button class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button></div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="contacts">
+                        <h3>Контакты</h3>
+                        <div class="input_box">
+                            <div class="input">
+                                <input class="input_text" value="{{ request.user.links }}" placeholder="Контакты">
+                                <div><button class="edit_a"><img src="{% static 'skillport/img/edit.png' %}" alt=""></button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about">
+                <textarea class="input_text_about" rows="3" placeholder="О себе...">{{ request.user.about }}</textarea>
+            </div>
+        </div>
+        <div class="create">
+            <form action="{% url 'create' %}">
+                <button class="create_button">Создать</button>
+            </form>
+        </div>
+
+        <div class="portfolio">
+        {% for project in user_projects %}
+            <div class="portfolio__col">
+                <div class="work">
+                    <img src="https://placehold.it/272x272" alt="" class="work__image">
+                    <div class="work__content">
+                        <div class="work__title">
+                            <p>{{ project.title }}</p>
+                        </div>
+                        <img src="{% static 'skillport/img/edit.png' %}" alt="" class="work__favorites">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        
+    </div>
+{% endblock %}
