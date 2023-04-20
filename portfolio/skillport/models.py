@@ -20,11 +20,11 @@ class Project(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, primary_key=True)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    # image = models.ImageField(blank=True)
-    date = models.DateTimeField(auto_now_add=True)
-    likes = models.PositiveIntegerField(default=0)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='projects')
+    image = models.ImageField(blank=True, upload_to="images/%Y/%m/%d/")
     content_type = models.ForeignKey('ProjectType', on_delete=models.PROTECT)
+    date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='projects')
+    likes = models.ManyToManyField(get_user_model(), related_name='likes')
 
     def __str__(self):
         return self.title

@@ -22,12 +22,21 @@
             {% for project in projects %}
                 <div class="portfolio__col">
                     <div class="work">
-                        <img src="https://placehold.it/272x272" alt="" class="work__image">
+                        <img src="{% if project.image %}{{ project.image.url }}{% else %}https://placehold.it/272x272{% endif %}" alt="" class="work__image">
                         <div class="work__content">
                             <div class="work__title">
                                 <p>{{ project.title }}</p>
                             </div>
-                            <img src="{% static 'skillport/img/favorites.png' %}" alt="" class="work__favorites">
+                            {% if not request.user.is_anonymous %}
+                                <form action="{% url 'like_project'%}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" name="project_id" value="{{ project.pk }}" class="work__favorites_button">
+                                        <img src="{% if request.user in project.likes.all %}{% static 'skillport/img/favorites.png' %}{% else %}{% static 'skillport/img/favorites_empty.png' %}{% endif %}" alt="" class="work__favorites">
+                                    </button>
+                                </form>
+                            {% else %}
+                            <img src="{% static 'skillport/img/favorites_empty.png' %}" alt="" class="work__favorites">
+                            {% endif %}
                         </div>
                     </div>
                 </div>

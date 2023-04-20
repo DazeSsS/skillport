@@ -31,7 +31,7 @@
                 </div>
 
                 <nav class="nav">
-                    <a href="#" class="nav__link">
+                    <a href="{% if not request.user.is_anonymous %}{% url 'favorites' %}{% endif %}" class="nav__link">
                         <img src="{% static 'skillport/img/favorites.png' %}" alt="">
                     </a>
                     {% if not request.user.is_authenticated %}

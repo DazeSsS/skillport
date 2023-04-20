@@ -22,32 +22,32 @@ body {
 }
 
 .container {
-  width: 100%;
-  max-width: 1296px;
-  padding-left: 19px;
-  padding-right: 20px;
-  margin: 0 auto;
+    width: 100%;
+    max-width: 1296px;
+    padding-left: 19px;
+    padding-right: 20px;
+    margin: 0 auto;
 }
 
 .header {
-  padding: 24px 0;
+    padding: 24px 0;
 }
   
 .header__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
   
 .user {
-  display: flex;
+    display: flex;
 }
   
 .user img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  height: 100%;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    height: 100%;
 }
 
 .box {
@@ -246,6 +246,12 @@ body {
     flex-wrap:wrap;
     margin-top: 32px;
     position:relative;
+}
+
+.portfolio__col {
+    margin-right: 17px;
+    margin-left: 17px;
+    margin-bottom: 34px;
 }
 
 .portfolio__col:hover {

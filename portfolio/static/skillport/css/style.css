@@ -210,13 +210,13 @@ body {
   border-radius: 30px;
   color: aliceblue;
   padding: 16px 16px;
-  margin-right: 7px;
-  margin-left: 7px;
-  margin-bottom: 21px;
+  margin-right: 21px;
+  margin-left: 21px;
+  margin-bottom: 42px;
   transition: box-shadow .2s linear;
 }
 
-.portfolio__col:hover{
+.portfolio__col:hover {
   box-shadow: 0 0 25px;
   color: #000 25%;
 }
@@ -228,26 +228,31 @@ body {
   border-radius: 30px;
 }
 
-.work__title{
-    border: 2px solid #887157;
-    border-radius: 30px;
-    width: 180px;
-    height: 42px;
-    overflow: hidden;
+.work__title {
+  border: 2px solid #887157;
+  border-radius: 30px;
+  width: 180px;
+  height: 42px;
+  overflow: hidden;
 }
 
-.work__favorites{
+.work__favorites {
   border: 2px solid #887157;
   border-radius: 30px;
 }
 
-.work__content{
+.work__favorites_button {
+  background: none;
+  cursor: pointer;
+}
+
+.work__content {
   display: flex;
   gap: 20px;
   padding-top: 30px;
 }
 
-.footer__logo{
+.footer__logo {
   width: 45px;
   height: 45px;
 }
@@ -257,14 +262,14 @@ body {
   height: 100%;
 }
 
-.footer__content{
+.footer__content {
   display: flex;
   justify-content: center;
   gap: 5px;
   padding-top: 52px;
 }
 
-.footer__link{
+.footer__link {
   display: flex;
   align-items: center;
 }

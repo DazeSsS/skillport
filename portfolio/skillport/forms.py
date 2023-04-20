@@ -27,7 +27,7 @@ class CreateProjectForm(ModelForm):
 
     class Meta:
         model = Project
-        fields = ['title', 'description', 'content_type']
+        fields = ['title', 'description', 'image', 'content_type']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

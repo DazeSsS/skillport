@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 
 from .models import Project
@@ -26,21 +27,6 @@ class LoginUser(LoginView):
         return reverse_lazy('home')
 
 
-def logout_user(request):
-    logout(request)
-    return redirect('home')
-
-
-def index_page(request):
-    projects = Project.objects.order_by('-date')
-    return render(request, 'skillport/index.html', {'projects': projects})
-
-
-def profile_page(request):
-    user_projects = Project.objects.filter(author=request.user.pk).order_by('-date')
-    return render(request, 'skillport/profile.html', {'user_projects': user_projects})
-
-
 class CreateProject(LoginRequiredMixin, CreateView):
     form_class = CreateProjectForm
     template_name = 'skillport/create.html'
@@ -52,6 +38,33 @@ class CreateProject(LoginRequiredMixin, CreateView):
         return redirect('profile')
 
 
+def logout_user(request):
+    logout(request)
+    return redirect('home')
+
+
+def index_page(request):
+    projects = Project.objects.order_by('-date')
+    return render(request, 'skillport/index.html', {'projects': projects})
+
+
+def profile_page(request):
+    user_projects = request.user.projects.order_by('-date')
+    return render(request, 'skillport/profile.html', {'user_projects': user_projects})
+
+
+def favorites_page(request):
+    favorites = request.user.likes.order_by('-date')
+    return render(request, 'skillport/favorites.html', {'favorites': favorites})
+
+
+def set_like(request):
+    project = get_object_or_404(Project, id=request.POST.get('project_id'))
+    if request.user not in project.likes.all():
+        project.likes.add(request.user)
+    else:
+        project.likes.remove(request.user)
+    return HttpResponseRedirect(reverse('home'))
 
 # def feed_page(request):
 #     projects = Project.objects.all()

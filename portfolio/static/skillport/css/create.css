@@ -57,9 +57,7 @@ body {
     padding:10px 0px;
 
     background: none;
-    border-style:solid;
-    border-color:#887157;
-
+    border: 2px solid #887157;
   
     font-size: 20px;
     font-weight: 400;
