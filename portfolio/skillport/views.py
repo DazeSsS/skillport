@@ -53,6 +53,12 @@ def profile_page(request):
     return render(request, 'skillport/profile.html', {'user_projects': user_projects})
 
 
+def project_page(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    another = project.author.projects.order_by('-date')[:3]
+    return render(request, 'skillport/project.html', {'project': project, 'another': another})
+
+
 def favorites_page(request):
     favorites = request.user.likes.order_by('-date')
     return render(request, 'skillport/favorites.html', {'favorites': favorites})
@@ -64,7 +70,7 @@ def set_like(request):
         project.likes.add(request.user)
     else:
         project.likes.remove(request.user)
-    return HttpResponseRedirect(reverse('home'))
+    return HttpResponseRedirect(reverse('project', args=[request.POST.get('project_id')]))
 
 # def feed_page(request):
 #     projects = Project.objects.all()

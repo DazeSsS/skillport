@@ -9,5 +9,6 @@ urlpatterns = [
     path('profile/', profile_page, name='profile'),
     path('create/', CreateProject.as_view(), name='create'),
     path('favorites/', favorites_page, name='favorites'),
+    path('project/<uuid:project_id>', project_page, name='project'),
     path('like/', set_like, name='like_project'),
 ]

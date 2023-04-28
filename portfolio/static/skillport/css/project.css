@@ -1,0 +1,256 @@
+body {
+    color: #615C5C;
+    font-family: 'PT Serif', serif;
+    font-size: 20px;
+    margin: 0 auto;
+    background-color: #282323;
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.work__check{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #C2B3A2;
+    border-radius: 30px;
+}
+
+.main__information{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#carouselExampleIndicators{
+    border-radius: 30px;
+    margin-top: 15px;
+}
+
+.carousel-inner{
+    border-radius: 30px;
+    width: 600px;
+    height: 550px;
+    border: 2px solid #887157;
+}
+
+.image{
+    width: 600px;
+    height: 550px;
+}
+
+.aside__header{
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.user__avatar{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    height: 100%;
+}
+
+.user__info{
+    flex-direction: column;
+}
+
+h1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 18px;
+    color: #282323;
+    margin-bottom: 3px;
+}
+
+h2{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #615C5C;
+    margin: 0 auto;
+}
+
+.subscribe{
+    background-color: #C2B3A2;
+    border-radius: 30px;
+    border: 2px solid #BB5C5C;
+    font-size: 17px;
+    padding: 0 12px;
+}
+
+.comments{
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.users__comments{
+    border: 2px solid #887157;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 400px;
+}
+
+.comment{
+    width: 321px;
+    background-color: #C2B3A2;
+    border: 2px solid #887157;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.aside__footer{
+    display: flex;
+    margin-top: 10px;
+}
+
+.add__favorite{
+    background-color: #C2B3A2;
+}
+
+.favorite{
+    background-color: #C2B3A2;
+    border: 2px solid #887157;
+    border-radius: 30px;
+    height: 100%;
+}
+
+h3{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 18px;
+    color: #282323;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.comment__info{
+    flex-direction: column;
+    margin-left: 85px;
+}
+
+h4{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #615C5C;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+h5{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #615C5C;
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    height: 120px;
+}
+
+h6{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 18px;
+    color: #282323;
+}
+
+.form__tittle{
+    display: flex;
+    color: #615C5C;
+    font-style: normal;
+    font-size: 30px;
+    gap: 20px;
+    padding-left: 70px;
+    align-items: center;
+    padding-right: 43px;
+}
+
+.line{
+    height: 2px;
+    background: #887157;
+    flex-grow: 1;
+    padding-right: 43px;
+}
+
+.portfolio{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 15px;
+}
+
+.portfolio__col {
+    width: 278px;
+    height: 364px;
+    background: #C2B3A2;
+    border-radius: 30px;
+    color: aliceblue;
+    padding: 16px;
+    margin: 22px 21px;
+    transition: box-shadow .2s linear;
+    border: 2px solid #887157;
+}
+
+.portfolio__col:hover{
+    box-shadow: 0 0 25px;
+    color: #000 25%;
+}
+
+.work__image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.work__title{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    width: 180px;
+    height: 42px;
+}
+
+.work__favorites{
+    border: 2px solid #887157;
+    border-radius: 30px;
+}
+
+.work__content{
+    display: flex;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+*,
+*:before,
+*:after {
+box-sizing: border-box;
+}
