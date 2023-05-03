@@ -11,6 +11,7 @@ class Person(AbstractUser):
     specialization = models.CharField(max_length=100, blank=True)
     links = models.TextField(blank=True)
     about = models.TextField(blank=True)
+    profile_picture = models.ImageField(blank=True, upload_to="images/%Y/%m/%d/", default="img/default_pfp.png")
 
     def __str__(self):
         return self.username

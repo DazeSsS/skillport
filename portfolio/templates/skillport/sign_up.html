@@ -12,7 +12,7 @@
     <title>Registration</title>
 </head>
 <body>
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="container">
             <div class="register__form"> 
@@ -59,7 +59,8 @@
                     </div>
                     <div class="create">
                         <div class="user__setting">
-                            <img src="https://placehold.it/150x150" alt="" class="avatar">
+                            <!-- <img src="https://placehold.it/150x150" alt="" class="avatar"> -->
+                            {{ form.profile_picture }}
                             <button class="contract">✔</button>
                             <title_2>Соглашаюсь</title_2>
                         </div>

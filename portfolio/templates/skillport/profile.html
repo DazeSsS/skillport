@@ -15,7 +15,7 @@
         <div class="box">
             <div class="user_box">
                 <div class="main_user_info">
-                    <img src="https://placehold.it/486x486" alt="" width="486px" height="486px">
+                    <img src="{{ user.profile_picture.url }}" alt="" width="486px" height="486px">
                     <div class="login">
                         <div class="input_box_input">
                             <input class='input_text_login'id="login" value="{{ request.user.username }}" placeholder="Логин">
