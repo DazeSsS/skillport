@@ -14,7 +14,7 @@
 
     <title>
         {% block title %}
-            SkillPort
+            SkillPort - Главная
         {% endblock %}
     </title>
 </head>
@@ -24,16 +24,13 @@
             <div class="header__inner">
                 <div class="user">
                     <div class="user__avatar">
-                        <a href="{% url 'home' %}"> 
+                        <a href="{% url 'home' %}">
                             <img src="{% static 'skillport/img/logo.jpg' %}" alt="logo">
                         </a>
                     </div>
                 </div>
 
                 <nav class="nav">
-                    <a href="{% if not request.user.is_anonymous %}{% url 'favorites' %}{% endif %}" class="nav__link">
-                        <img src="{% static 'skillport/img/favorites.png' %}" alt="">
-                    </a>
                     {% if not request.user.is_authenticated %}
                         <div class="nav__auth-btns">
                             <form action="{% url 'login' %}">
@@ -45,6 +42,12 @@
                             </form>
                         </div>
                     {% else %}
+                        <a href="{% url 'subscriptions' %}" class="nav__link">
+                            <img src="{% static 'skillport/img/add.png' %}" alt="">
+                        </a>
+                        <a href="{% url 'favorites' %}" class="nav__link">
+                            <img src="{% static 'skillport/img/favorites.png' %}" alt="">
+                        </a>
                         <a href="{% url 'profile' %}" class="nav__link">
                             <img src="{% static 'skillport/img/profile.png' %}" alt="">
                         </a>

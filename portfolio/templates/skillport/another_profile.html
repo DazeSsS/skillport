@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'skillport/css/profile2.css' %}">
+    <title>{{ user }}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="user">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'skillport/img/logo.jpg' %}" alt="">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <a href="{% url 'subscriptions' %}" class="nav__link">
+                        <img src="{% static 'skillport/img/add.png' %}" alt="">
+                    </a>
+                    <a href="{% url 'favorites' %}" class="nav__link">
+                        <img src="{% static 'skillport/img/favorites.png' %}" alt="">
+                    </a>
+                    <a href="{% url 'profile' %}" class="nav__link">
+                        <img src="{% static 'skillport/img/profile.png' %}" alt="">
+                    </a>
+                    <p>{{ request.user }} | 
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </p>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="info__inner">
+            <div class="info__left">
+                <div class="info__main">
+                    <img src="{{ user.profile_picture.url }}" alt="" class="info__pic">
+                    <div class="info__info">
+                        <label class="info__login">{{ user }}</label><br>
+                        <label class="info__counter">{{ user.get_subscriptions_count }}</label><br>
+                        {% if not request.user.is_anonymous %}
+                            <form action="{% url 'subscribe' %}" method="POST">
+                                {% csrf_token %}
+                                    {% if not subscribed %}
+                                        <button class="info__button" type="submit" name="user_id" value="{{ user.pk }}">Подписаться</button>
+                                    {% else %}
+                                        <button class="info__button_subscribed" type="submit" name="user_id" value="{{ user.pk }}">Вы подписаны</button>
+                                    {% endif %}
+                            </form>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+                <button class="info__button additional__info">Дополнительная информация</button>
+            </div>
+            <div class="description">
+                {% if user.about %}
+                    {{ user.about }}
+                {% else %}
+                    Здесь ничего нет :(
+                {% endif %}
+            </div>
+        </div>
+
+        <hr class="line">
+
+        <div class="portfolio">
+            {% for project in user_projects %}
+                <div class="portfolio__col">
+                    <div class="work">
+                        <a href="{% url 'project' project.pk %}">
+                            <img src="{{ project.image.url }}" alt="" class="work__image">
+                        </a>
+                        <div class="work__content">
+                            <div class="work__title">
+                                {{ project.title }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__link">
+                        https://vk.com/kegab00m
+                    </div>
+                    <div class="footer__logo">
+                        <img src="{% static 'skillport/img/logo.jpg' %}" alt="" width="42" height="42">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>

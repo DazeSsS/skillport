@@ -6,15 +6,17 @@
     <div class="works">
         <div class="container">
             <div class="nav-links">
-                <div class="nav-links__links-wrapper">
-                    <button class="nav-links__button">Изображения/Видео</button>
-                    <button class="nav-links__button">Аудио</button>
-                    <button class="nav-links__button">Текст</button>
-                    <button class="nav-links__button">Найти <img src="{% static 'skillport/img/search-icon.png' %}"
-                            alt="search-icon"></button>
+                <div class="search">
+                    <input class="search__text" placeholder="Поиск...">
                 </div>
-                <div class="nav-links__input-wrapper">
-                    <input type="text" name="input-nav" id="input-nav" placeholder="Поиск...">
+                <div class="dropdown">
+                    <li class="categories"><a href="#" class="categories">Категории &bigtriangledown;</a>            
+                        <ul class="dropdown-menu">
+                            <li><button class="category" href="#">Дизайн</button></li>
+                            <li><button class="category" href="#">Код</button></li>
+                            <li><button class="category" href="#">...</button></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
 
@@ -22,28 +24,22 @@
             {% for project in projects %}
                     <div class="portfolio__col">
                         <div class="work">
-                            <a href="{% url 'project' project.pk %}">
-                            <img src="{% if project.image %}{{ project.image.url }}{% else %}https://placehold.it/272x272{% endif %}" alt="" class="work__image"></a>
+                            <div class="image">
+                                <a href="{% url 'project' project.pk %}" target = "_blank">
+                                    <img src="{% if project.image %}{{ project.image.url }}{% else %}https://placehold.it/272x272{% endif %}" alt="" class="work__image">
+                                </a>
+                            </div>
                             <div class="work__content">
                                 <div class="work__title">
-                                    <p>{{ project.title }}</p>
+                                    <div class="work__text">
+                                        {{ project.title }}
+                                    </div>
                                 </div>
-                                {% if not request.user.is_anonymous %}
-                                    <form action="{% url 'like_project'%}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit" name="project_id" value="{{ project.pk }}" class="work__favorites_button">
-                                            <img src="{% if request.user in project.likes.all %}{% static 'skillport/img/favorites.png' %}{% else %}{% static 'skillport/img/favorites_empty.png' %}{% endif %}" alt="" class="work__favorites">
-                                        </button>
-                                    </form>
-                                {% else %}
-                                <img src="{% static 'skillport/img/favorites_empty.png' %}" alt="" class="work__favorites">
-                                {% endif %}
                             </div>
                         </div>
                     </div>
             {% endfor %}
             </div>
-
         </div>
     </div>
 {% endblock %}

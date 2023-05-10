@@ -18,9 +18,10 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1320px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 50px;
     margin: 0 auto;
 }
 
@@ -36,30 +37,40 @@ body {
 .main__information{
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 #carouselExampleIndicators{
     border-radius: 30px;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .carousel-inner{
     border-radius: 30px;
-    width: 600px;
-    height: 550px;
+    width: 800px;
+    height: 750px;
     border: 2px solid #887157;
 }
 
+.carousel-item{
+    width: 800px;
+    height: 750px;
+}
+
 .image{
-    width: 600px;
-    height: 550px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aside{
+    width: 400px;
 }
 
 .aside__header{
     display: flex;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 49px;
+    margin-top: 25px;
 }
 
 .user__avatar{
@@ -91,14 +102,23 @@ h2{
 }
 
 .subscribe{
-    background-color: #C2B3A2;
+    background-color: #BB5C5C;
     border-radius: 30px;
     border: 2px solid #BB5C5C;
     font-size: 17px;
     padding: 0 12px;
 }
 
+.subscribed{
+    background-color: #6a6a6a;
+    border-radius: 30px;
+    border: 2px solid #6a6a6a;
+    font-size: 17px;
+    padding: 0 12px;
+}
+
 .comments{
+    width: 400px;
     flex-direction: column;
     margin-top: 15px;
 }
@@ -107,15 +127,37 @@ h2{
     border: 2px solid #887157;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    height: 400px;
+    border-bottom: 0;
+    height: 590px;
+}
+
+.write__comment{
+    display: flex;
 }
 
 .comment{
-    width: 321px;
-    background-color: #C2B3A2;
+    width: 400px;
+    height: 100px;
+    background: #C2B3A2;
     border: 2px solid #887157;
-    border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    padding-left: 15px;
+    padding-right: 10px;
+    resize: none;
+}
+
+.comment:focus {
+    outline-color: #887157;
+    }
+
+.comment::-webkit-scrollbar {
+    width: 0;
+}
+
+::placeholder{
+    color: #282323;
 }
 
 .aside__footer{
@@ -125,6 +167,8 @@ h2{
 
 .add__favorite{
     background-color: #C2B3A2;
+    width: 49px;
+    height: 49px;
 }
 
 .favorite{
@@ -146,7 +190,8 @@ h3{
 
 .comment__info{
     flex-direction: column;
-    margin-left: 85px;
+    text-align: right;
+    margin-left: 166px;
 }
 
 h4{
@@ -171,8 +216,14 @@ h5{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
-    height: 120px;
+    margin-top: 70px;
+    flex-direction: column;
+}
+
+.description__text{
+    text-align: center;
+    padding: 20px 50px;
+    word-wrap: break-word;
 }
 
 h6{
@@ -185,7 +236,7 @@ h6{
 
 .form__tittle{
     display: flex;
-    color: #615C5C;
+    color: #282323;
     font-style: normal;
     font-size: 30px;
     gap: 20px;
@@ -224,18 +275,32 @@ h6{
     color: #000 25%;
 }
 
+.img{
+    width: 242px;
+    height: 242px;
+}
+
 .work__image {
     display: block;
-    max-width: 100%;
-    height: auto;
     border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .work__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid #887157;
     border-radius: 30px;
-    width: 180px;
-    height: 42px;
+    width: 250px;
+    height: 70px;
+}
+
+.work__text{
+    font-size: 25px;
+    color: #584937;
 }
 
 .work__favorites{
@@ -246,7 +311,7 @@ h6{
 .work__content{
     display: flex;
     gap: 20px;
-    padding-top: 30px;
+    padding-top: 15px;
 }
 
 *,

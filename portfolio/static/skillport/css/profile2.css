@@ -1,0 +1,208 @@
+html {
+    font-size: 20px;
+  }
+body {
+    color: #AFA3A3;
+    font-family: 'PT Serif', serif;
+    font-size: 20px;
+    margin:0;
+    background-color: #282323;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+.nav__link{
+    display: flex;
+    padding-right: 22px;
+    text-decoration: none;
+}
+.nav__link img{
+    width:42px;
+    height: 42px;
+    border-radius: 50%;
+}
+.container {
+    width: 100%;
+    max-width: 1320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+  }
+.header {
+  padding: 24px 0;
+}
+  
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user {
+    display: flex;
+  }
+    
+.user img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    height: 100%;
+}
+
+.info__inner{
+    display:flex;
+    align-items: center
+}
+.info__left{
+    margin-left: 100px;
+}
+.info__main{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.info__info{
+    margin-left: 13px;
+}
+.info__pic{
+    width:140px;
+    height:140px;
+    border-radius: 50%;
+}
+.info__login{
+    font-size:36px;
+    color: #CCCCCC;
+}
+.info__counter{
+    font-size:26px;
+    color:#615C5C;
+}
+.info__button{
+    width: max-content;
+    align-items: flex-end;
+    font-family: 'PT Serif';
+
+    padding:12px 30px;
+    margin-top: 10px;
+
+    background: #BB5C5C;
+    border-style: none;
+
+  
+    font-size: 20px;
+    font-weight: 400;
+    color: #CCCCCC;
+  
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.info__button_subscribed{
+    width: max-content;
+    align-items: flex-end;
+    font-family: 'PT Serif';
+
+    padding:12px 30px;
+    margin-top: 10px;
+
+    background: #6a6a6a;
+    border-style: none;
+
+  
+    font-size: 20px;
+    font-weight: 400;
+    color: #CCCCCC;
+  
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.additional__info{
+    background: #C2B3A2;
+    color:#282323;
+    margin-top:34px;
+}
+.description{
+    background: #C2B3A2;
+    width:708px;
+    height:233px;
+    margin-left: 66px;
+    border-radius: 30px;
+    color:#282323;
+    padding:15px;
+}
+.line{
+    margin:48px 0px;
+    color:#C2B3A1;
+}
+
+.portfolio {
+    display: flex;
+    flex-wrap:wrap;
+    margin-top: 32px;
+    position:relative;
+  }
+  
+  .portfolio__col {
+    width: 278px;
+    height: 364px;
+    background: #C2B3A2;
+    border-radius: 30px;
+    color: aliceblue;
+    padding: 16px 16px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 21px;
+    transition: box-shadow .2s linear;
+  }
+  
+  .portfolio__col:hover{
+    box-shadow: 0 0 25px;
+    color: #000 25%;
+  }
+  
+  .work__image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+  }
+  
+  .work__title{
+      border: 2px solid #887157;
+      border-radius: 30px;
+      width: 180px;
+      height: 42px;
+  }
+  
+  .work__favorites{
+    border: 2px solid #887157;
+    border-radius: 30px;
+    width: 46px;
+  }
+  
+  .work__content{
+    display: flex;
+    gap: 20px;
+    padding-top: 30px;
+  }
+
+
+  .footer__logo img {
+    border-radius: 50%;
+  }
+  
+  .footer__content{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    padding-top: 52px;
+  }
+  
+  .footer__link{
+    display: flex;
+    align-items: center;
+  }

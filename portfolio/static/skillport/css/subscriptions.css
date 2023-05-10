@@ -1,0 +1,161 @@
+html {
+    font-size: 20px;
+  }
+body {
+    color: #AFA3A3;
+    font-family: 'PT Serif', serif;
+    font-size: 20px;
+    background-color: #282323;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+.nav__link{
+    display: flex;
+    padding-right: 22px;
+    text-decoration: none;
+}
+.nav__link img{
+    width:42px;
+    height: 42px;
+    border-radius: 50%;
+}
+.container {
+    width: 100%;
+    max-width: 1320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+  }
+.header {
+  padding: 24px 0;
+  margin-bottom: 4px;
+}
+  
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user {
+    display: flex;
+  }
+    
+.user img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    height: 100%;
+}
+.nav-links {
+    padding: 20px;
+    margin: 0 100px;
+    margin-bottom: 96px;
+    background: #887157;
+    border-radius: 30px;
+  }
+  
+  .nav-links__button {
+    font-family: 'PT Serif';
+    padding: 8px 0;
+    flex-basis: 25%;
+  
+    background: none;
+    outline: none;
+    border: 0;
+  
+    font-size: 20px;
+    font-weight: 400;
+    color: #615C5C;
+  
+    background: #C2B3A2;
+    border-radius: 30px;
+  
+    cursor: pointer;
+  }
+  .nav-links__input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 22px;
+
+  }
+.nav-links__button img{
+    width:20px;
+    height:20px;
+}
+  #input-nav {
+    width: 80%;
+    outline: none;
+    border-radius: 20px;
+    border: 0;
+    background: #C2B3A2;
+    padding: 8px 23px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'PT Serif';
+    color: #615C5C;
+  }
+
+.subed__all{
+    display:flex;
+    flex-wrap: wrap;
+}
+.subed__single{
+    display: flex;
+    align-items: center;
+    margin:31px;
+    width:598px;
+}
+.subed__pic{
+    width:140px;
+    height:140px;
+    border-radius: 50%;
+}
+.subed__info{
+    margin-left: 14px;
+    margin-right: 50px;
+    width:243px;
+}
+.subed__login{
+    font-size:40px;
+    color: #CCCCCC;
+    cursor: pointer;
+}
+.subed__counter{
+    font-size:28px;
+    color:#615C5C;
+}
+.sub__button{
+    align-items: flex-end;
+    font-family: 'PT Serif';
+    padding:12px;
+
+    background: none;
+    border-style: solid;
+    border-color: #BB5C5C;
+  
+    font-size: 18px;
+    font-weight: 400;
+    color: #CCCCCC;
+  
+    border-radius: 30px;
+  
+    cursor: pointer;
+}
+.footer__logo img {
+    border-radius: 50%;
+  }
+  
+  .footer__content{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    padding-top: 52px;
+  }
+  
+  .footer__link{
+    display: flex;
+    align-items: center;
+  }
