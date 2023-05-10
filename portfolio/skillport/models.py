@@ -39,16 +39,12 @@ class ProjectType(models.Model):
         return self.name
 
 
-# class Comment(models.Model):
-#     VOTE_TYPE = [
-#         ('up', 'Вверх'),
-#         ('down', 'Вниз')
-#     ]
-#     text = models.TextField(blank=False)
-#     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-#     value = models.CharField(max_length=150, choices=VOTE_TYPE)
-#     date = models.DateTimeField(auto_now_add=True)
-#     #user = пока хз как описать отношения между пользователями и комментами
+class Comment(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(Person, null=True, on_delete=models.CASCADE, related_name='user')
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
     
-#     def __str__(self):
-#         return self.value
+    
+    def __str__(self):
+        return self.body
