@@ -60,8 +60,8 @@ class ProjectType(models.Model):
 
 
 class Comment(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(Person, null=True, on_delete=models.CASCADE, related_name='user')
+    project = models.ForeignKey(Project, related_name="comments", on_delete=models.CASCADE)
+    author = models.ForeignKey(Person, null=True, related_name='comments', on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     

@@ -8,6 +8,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
+from .forms import CreateCommentForm
+from .models import Comment
 
 from .models import Project, Person
 from .forms import CreateUserForm, CreateProjectForm
@@ -62,9 +64,31 @@ def another_profile_page(request, user_id):
 
 def project_page(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
+    comments = Comment.objects.filter(project = project)
+
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            form = CreateCommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.author = request.user
+                comment.project = project
+                comment.save()
+        else:
+            messages.error(request, "Необходимо войти в аккаунт, чтобы оставлять комментарии")
+    else:
+        form = CreateCommentForm()
+
     another = project.author.projects.exclude(id=project_id).order_by('-date')[:3]
     subscribed = True if project.author in request.user.subscriptions.all() else False
-    return render(request, 'skillport/project.html', {'project': project, 'another': another, 'subscribed': subscribed})
+    return render(request, 'skillport/project.html', {
+        'project': project, 
+        'another': another, 
+        'subscribed': subscribed, 
+        'form': form,
+        'comments': comments
+        }
+    )
 
 
 def favorites_page(request):

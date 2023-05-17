@@ -129,6 +129,7 @@ h2{
     border-top-right-radius: 30px;
     border-bottom: 0;
     height: 590px;
+    overflow: hidden;
 }
 
 .write__comment{

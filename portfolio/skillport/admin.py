@@ -23,8 +23,6 @@ class ProjectAdmin(ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['body', 'project', 'created', 'author']
-    list_filter = ['created']
-    search_fields = ['body']
+    list_display = ['project', 'author', 'body',  'created']
 
 admin.site.register(ProjectType)

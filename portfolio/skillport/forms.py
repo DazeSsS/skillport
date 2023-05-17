@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 from django import forms
-from .models import Person, Project
+from .models import Person, Project, Comment
 
 class CreateUserForm(UserCreationForm):
 
@@ -34,3 +34,15 @@ class CreateProjectForm(ModelForm):
 
         self.fields['title'].widget.attrs.update({'class': 'input name-input'})
         self.fields['description'].widget.attrs.update({'class': 'input description-input'})
+
+
+class CreateCommentForm(ModelForm):
+    
+    class Meta:
+        model = Comment
+        fields = ['body']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['body'].widget.attrs.update({'class': 'input comment'})

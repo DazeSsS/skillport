@@ -60,10 +60,19 @@
 
                     <div class="comments">
                         <div class="users__comments">
-                            
+                            {% for comment in comments %}
+                                <a href="{% url 'another_profile' comment.author.pk %}">{{ comment.author }}<a> <br>
+                                {{ comment.body }} <br>
+                                {{ comment.created }}
+                                <hr>    
+                            {% endfor %}
                         </div>
                         <div class="write__comment">
-                            <textarea class="comment" placeholder="Введите комментарий..."></textarea>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                {{form.body}}
+                                <input type="submit" value="Отправить"> 
+                            </form>
                         </div>
                     </div>
 
@@ -80,7 +89,7 @@
                         {% endif %}
                         <h3>{{ project.likes.count }}</h3>
                         <div class="comment__info">
-                            <h4>0 комментариев</h4>
+                            <h4>{{ project.comments.count }} комментариев мне похуй на плуралайз пока что</h4>
                             <h5>{{ project.date }}</h5>
                         </div>
                     </div>
@@ -88,7 +97,7 @@
             </div>
 
         <div class="description">
-            <h6>Описание проекта</h6>
+            <h6>{{ project.title }}</h6>
             <div class="description__text">
                 <p>{{ project.description }}</p>
             </div>
