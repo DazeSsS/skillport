@@ -1,0 +1,243 @@
+body {
+    color: #615C5C;
+    font-family: 'PT Serif', serif;
+    font-size: 20px;
+    margin: 0 auto;
+    background-color: #282323;
+    box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.create__project{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #C2B3A2;
+    border-radius: 30px;
+    margin-top: 80px;
+    padding: 0 20px;
+}
+
+.form__tittle{
+    display: flex;
+    color: #887157;
+    font-style: normal;
+    font-size: 30px;
+    gap: 20px;
+    align-items: center;
+    margin: 20px 43px;
+}
+
+.line{
+    height: 2px;
+    background: #887157;
+    flex-grow: 1;
+    padding-right: 43px;
+}
+
+
+.pictures{
+    margin-left: 30px;
+}
+
+.main__information{
+    display: flex;
+    gap: 60px;
+}
+
+.main__picture{
+    border: 2px dashed #887157;
+    border-radius: 30px;
+}
+
+.other__pictures{
+    display: flex;
+    gap: 13px;
+    margin-top: 10px;
+    width:420px;
+
+    flex-wrap: wrap;
+}
+
+.other__picture{
+    border: 2px dashed #887157;
+    border-radius: 30px;
+    display: flex;
+    width:125px;
+    height: 125px;
+}
+
+.content{
+    max-width: 430px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #282323;
+    font-weight: normal;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.title{
+    height: 50px;
+    width: 100%;
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background-color: #C2B3A2;
+    margin-bottom: 15px;
+    font-size:20px;
+    padding-left: 15px;
+}
+
+.name{
+    margin:0 30px;
+    margin-bottom: 0;
+}
+
+
+.dropdown{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    height: 42px;
+    background: #C2B3A2;
+    border-radius: 30px;
+    margin-bottom: 55px;
+}
+
+.categories{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 810px;
+    height: 100%;
+    color: #282323;
+    text-decoration: none;
+    color:#887157;  
+}
+
+.drpdwn{
+    margin-left: 290px;
+    width: 400px;
+    border: 1px solid #887157;
+    border-radius: 30px;
+}
+
+.dropdown-menu{
+    position: absolute;
+    width: 339px;
+    margin-top: 142px;
+    display: none;
+    list-style-type:  none;
+}
+
+.categories:hover > .dropdown-menu{
+    display: initial;
+}
+
+.category{
+    margin-left: 115px;
+    width: 400px;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #887157;
+    border-radius: 30px;
+    color: #282323;
+    text-decoration: none;
+    background-color: #C2B3A2;
+    font-size: 20px;
+    font-family: 'PT Serif', serif;
+    cursor: pointer;
+}
+
+.upload{
+    display: flex;
+    gap:10px;
+}
+
+.upload img{
+    width:22px;
+    height: 22px;
+}
+
+.upload button{
+    background: none;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 20px;
+    color: #282323;
+    font-weight: normal;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.description{
+    margin: 0 30px;
+    margin-top: 10px;
+}
+
+.description textarea{
+    height: 200px;
+    width: 100%;
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background-color: #C2B3A2;
+    font-size: 20px;
+    padding: 10px 10px;
+    resize: none;
+    overflow: hidden;
+}
+
+.publish{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.input-button{
+    width:22px;
+    height:22px;
+    background: url(https://sun9-57.userapi.com/impg/kg9DCQeeFDCNtfOzUEv0KTHB0sRlnvrC47L00A/hniTlDv64Eo.jpg?size=261x261&quality=96&sign=97e6076e10150accd628d0577dbc85f7&type=album) no-repeat;
+    background-size:100%;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+input{
+    outline: 0 !important;
+}
+
+.publish__button{
+    border-radius: 30px;
+    background: #BB5C5C;
+    width: 250px;
+    height: 45px;
+    font-style: normal;
+    font-size: 20px;
+    color: #CCCCCC;
+    align-items: center;
+    cursor: pointer;
+}
