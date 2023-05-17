@@ -19,7 +19,7 @@ class CreateUserForm(UserCreationForm):
         self.fields['last_name'].widget.attrs.update({'class': 'surname'})
         self.fields['first_name'].widget.attrs.update({'class': 'name'})
         self.fields['specialization'].widget.attrs.update({'class': 'specialization'})
-        self.fields['links'].widget.attrs.update({'class': 'specialization'})
+        self.fields['links'].widget.attrs.update({'class': 'links'})
         self.fields['about'].widget.attrs.update({'class': 'about'})
 
 

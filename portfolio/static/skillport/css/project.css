@@ -45,6 +45,10 @@ body {
     margin-top: 25px;
 }
 
+.carousel-indicators{
+    margin-top: 0;
+}
+
 .carousel-inner{
     border-radius: 30px;
     width: 800px;
@@ -81,6 +85,11 @@ body {
 
 .user__info{
     flex-direction: column;
+}
+
+a{
+    color: #282323;
+    text-decoration: none;
 }
 
 h1{
@@ -129,7 +138,13 @@ h2{
     border-top-right-radius: 30px;
     border-bottom: 0;
     height: 590px;
-    overflow: hidden;
+    overflow: auto;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.users__comments::-webkit-scrollbar {
+    width: 0;
 }
 
 .write__comment{

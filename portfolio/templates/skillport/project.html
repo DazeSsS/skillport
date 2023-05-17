@@ -60,12 +60,14 @@
 
                     <div class="comments">
                         <div class="users__comments">
-                            {% for comment in comments %}
+                            <div class="user__comments__info">
+                                {% for comment in comments %}
                                 <a href="{% url 'another_profile' comment.author.pk %}">{{ comment.author }}<a> <br>
                                 {{ comment.body }} <br>
                                 {{ comment.created }}
                                 <hr>    
                             {% endfor %}
+                            </div>
                         </div>
                         <div class="write__comment">
                             <form action="" method="POST">

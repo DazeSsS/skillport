@@ -83,6 +83,8 @@ h {
     height: 62px;
     margin-top: 15px;
     margin-bottom: 40px;
+    font-size: 30px;
+    padding-left: 10px;
 }
 .password {
     border: 2px solid #887157;
@@ -92,6 +94,16 @@ h {
     height: 62px;
     margin-top: 15px;
     margin-bottom: 3px;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.login:focus {
+    outline-color: #887157;
+    }
+
+.password:focus {
+    outline-color: #887157;
 }
 
 .log__in__button {

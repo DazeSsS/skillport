@@ -84,6 +84,12 @@ h1 {
     height: 35px;
     margin-top: 5px;
     margin-bottom: 3px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.login:focus {
+    outline-color: #887157;
 }
 
 .email {
@@ -94,6 +100,16 @@ h1 {
     height: 35px;
     margin-top: 5px;
     margin-bottom: 3px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.email:focus {
+    outline-color: #887157;
+}
+
+.password:focus {
+    outline-color: #887157;
 }
 
 .password {
@@ -104,6 +120,12 @@ h1 {
     height: 35px;
     margin-top: 5px;
     margin-bottom: 3px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.password:focus {
+    outline-color: #887157;
 }
 
 .form__title__2 {
@@ -161,6 +183,12 @@ title_1 {
     margin-top: 5px;
     margin-bottom: 3px;
     margin-left: 45px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.surname:focus {
+    outline-color: #887157;
 }
 
 .name {
@@ -173,6 +201,12 @@ title_1 {
     margin-top: 5px;
     margin-bottom: 3px;
     margin-left: 4px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.name:focus {
+    outline-color: #887157;
 }
 
 .specialization {
@@ -184,6 +218,12 @@ title_1 {
     margin-top: 5px;
     margin-bottom: 3px;
     margin-left: 45px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.specialization:focus {
+    outline-color: #887157;
 }
 
 .links {
@@ -195,6 +235,23 @@ title_1 {
     margin-top: 5px;
     margin-bottom: 3px;
     margin-left: 45px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-family: 'PT Serif', serif;
+    resize: none;
+}
+
+.links:focus {
+    outline-color: #887157;
+}
+
+.links::-webkit-scrollbar {
+    width: 0;
 }
 
 .user__setting {
@@ -222,7 +279,7 @@ title_2 {
     background: #bd5151;
     width: 200px;
     height: 35px;
-    margin-top: 17px;
+    margin-top: 150px;
     margin-left: 120px;
     font-size: 17px;
     color: #CCCCCC;
@@ -236,13 +293,27 @@ title_2 {
 
 .about {
     border: 2px solid #887157;
-    border-radius: 30px;
+    border-radius: 20px;
     background: #C2B3A2;
     width: 873px;
-    height: 35px;
+    height: 75px;
     margin-top: 5px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     margin-left: 45px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    resize: none;
+    font-style: normal;
+    font-family: 'PT Serif', serif;
+}
+
+.about:focus {
+    outline-color: #887157;
+}
+
+.about::-webkit-scrollbar {
+    width: 0;
 }
 
 .avatar {

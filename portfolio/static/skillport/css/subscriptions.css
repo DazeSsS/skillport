@@ -7,6 +7,10 @@ body {
     font-size: 20px;
     background-color: #282323;
 }
+a{
+  color: #887157;
+  text-decoration: none;
+}
 .nav {
     display: flex;
     align-items: center;
@@ -122,6 +126,7 @@ body {
     font-size:40px;
     color: #CCCCCC;
     cursor: pointer;
+    text-decoration: none;
 }
 .subed__counter{
     font-size:28px;
