@@ -32,8 +32,9 @@ class CreateProjectForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['title'].widget.attrs.update({'class': 'input name-input'})
+        self.fields['title'].widget.attrs.update({'class': 'input title'})
         self.fields['description'].widget.attrs.update({'class': 'input description-input'})
+        self.fields['image'].widget.attrs.update({'class': 'input-button'})
 
 
 class CreateCommentForm(ModelForm):

@@ -91,7 +91,7 @@
                         {% endif %}
                         <h3>{{ project.likes.count }}</h3>
                         <div class="comment__info">
-                            <h4>{{ project.comments.count }} комментариев мне похуй на плуралайз пока что</h4>
+                            <h4>{{ project.get_comments_count }}</h4>
                             <h5>{{ project.date }}</h5>
                         </div>
                     </div>

@@ -27,7 +27,6 @@ class Person(AbstractUser):
 
     def get_subscriptions_count(self):
         count = str(self.subscriptions.count())
-        print(count)
         if count[-1] == '1' and count != '11':
             return f'{count} Подписчик'
         elif count[-1] in ['2', '3', '4'] and count not in ['12', '13', '14']:
@@ -51,6 +50,15 @@ class Project(models.Model):
     def __str__(self):
         return self.title
     
+    def get_comments_count(self):
+        count = str(self.comments.count())
+        if count[-1] == '1' and count != '11':
+            return f'{count} комментарий'
+        elif count[-1] in ['2', '3', '4'] and count not in ['12', '13', '14']:
+            return f'{count} комментария'
+        else:
+            return f'{count} комментариев'
+    
 
 class ProjectType(models.Model):
     name = models.CharField(max_length=30, db_index=True)
@@ -62,9 +70,11 @@ class ProjectType(models.Model):
 class Comment(models.Model):
     project = models.ForeignKey(Project, related_name="comments", on_delete=models.CASCADE)
     author = models.ForeignKey(Person, null=True, related_name='comments', on_delete=models.CASCADE)
-    body = models.TextField()
+    body = models.TextField(blank=False)
     created = models.DateTimeField(auto_now_add=True)
-    
     
     def __str__(self):
         return self.body
+    
+# class AdditionalImages(models.Model):
+#     project = models.ForeignKey(Project, related_name="additional_images", on_delete=models.CASCADE)

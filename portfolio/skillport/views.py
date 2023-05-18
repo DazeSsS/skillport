@@ -65,8 +65,9 @@ def another_profile_page(request, user_id):
 def project_page(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     comments = Comment.objects.filter(project = project)
-
-    if request.method == "POST":
+    
+    form = CreateCommentForm()
+    if request.method == "POST": 
         if request.user.is_authenticated:
             form = CreateCommentForm(request.POST)
             if form.is_valid():
@@ -74,10 +75,12 @@ def project_page(request, project_id):
                 comment.author = request.user
                 comment.project = project
                 comment.save()
+                form = CreateCommentForm()
+                return redirect('project', project_id)
         else:
             messages.error(request, "Необходимо войти в аккаунт, чтобы оставлять комментарии")
-    else:
-        form = CreateCommentForm()
+    # else:
+    #     form = CreateCommentForm()
 
     another = project.author.projects.exclude(id=project_id).order_by('-date')[:3]
     subscribed = True if project.author in request.user.subscriptions.all() else False

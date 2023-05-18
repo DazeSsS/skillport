@@ -1,0 +1,142 @@
+body {
+    color: #615C5C;
+    font-family: 'PT Serif', serif;
+    font-size: 26px;
+    margin: 0 auto;
+    background-color: #282323;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: #C2B3A2;
+    border-radius: 30px;
+    margin-top: 110px;
+}
+
+.naming {
+    display: flex;
+    align-items: center;
+    color: #887157;
+    gap:13px;
+    font-size: 40px;
+    margin: 25px 0px;
+    padding: 0px 70px;
+}
+
+.line {
+    height: 2px;
+    background: #887157;
+    flex-grow: 1;
+}
+
+.switch-buttons {
+    display: flex;
+    justify-content: center;
+    gap:22px;
+    margin-bottom: 48px;
+}
+
+.switch-buttons button {
+    width: 244px;
+    font-family: 'PT Serif';
+
+    padding:10px 0px;
+
+    background: none;
+    border: 2px solid #887157;
+  
+    font-size: 20px;
+    font-weight: 400;
+    color: #615C5C;
+  
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.create-inner {
+    display: flex;
+    align-items: center;
+}
+
+.create-gallery {
+    margin-left: 27px;
+}
+
+.create-gallery img {
+    border-style: dashed;
+    border-color: #887157;
+    border-width: 2px;
+    border-radius: 30px;
+}
+
+.create-gallery button {
+    background: none;
+    border:none;
+    cursor: pointer;
+
+}
+
+.lil-gallery img {
+    margin-top: 24px;
+    margin-left: 4px;
+}
+
+.create-info {
+    display: flex;
+    flex-direction: column;
+    width:max-content;
+    margin-left: 48px;
+    color:#282323;
+}
+
+.input {
+    border: 2px solid #887157;
+    border-radius: 30px;
+    background: #C2B3A2;
+    width: 545px;
+    height: 62px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.description-input {
+    height:603px;
+    padding-top: 10px;
+}
+
+.publish {
+    margin: 48px 0px;
+    margin-left:511px;
+}
+
+.publish button {
+    border-radius: 30px;
+    border-style: none;
+    background: #bd5151;
+    width: 341px;
+    height: 62px;
+    font-size: 28px;
+    color: #CCCCCC;
+    align-items: center;
+    cursor:pointer;
+}
+
+.publish button:hover {
+    background: #d64444;
+}
