@@ -1,5 +1,8 @@
 venv
 env
-media
+
+portfolio/media/*
+!portfolio/media/default/
+
 db.sqlite3
 **/__pycache__
