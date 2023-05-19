@@ -46,7 +46,7 @@
                             </h1>
                             <h2>{{ project.author.get_subscriptions_count }}</h2>
                         </div>
-                        {% if not request.user.is_anonymous and request.user.person != project.author %}
+                        {% if not request.user.is_anonymous and person != project.author %}
                             <form action="{% url 'subscribe_from_project' project.pk %}" method="POST">
                                 {% csrf_token %}
                                     {% if not subscribed %}
@@ -62,7 +62,11 @@
                         <div class="users__comments">
                             <div class="user__comments__info">
                                 {% for comment in comments %}
-                                <a href="{% url 'another_profile' comment.author.pk %}">{{ comment.author }}<a> <br>
+                                {% if comment.author.user %}
+                                    <a href="{% url 'another_profile' comment.author.pk %}">{{ comment.author }}<a> <br>
+                                {% else %}
+                                    <p><b>{{ comment.author }}</b></p>
+                                {% endif %}
                                 {{ comment.body }} <br>
                                 {{ comment.created }}
                                 <hr>    
@@ -79,16 +83,12 @@
                     </div>
 
                     <div class="aside__footer">
-                        {% if not request.user.is_anonymous %}
-                            <form action="{% url 'like_project' %}" method="POST">
-                                {% csrf_token %}
-                                <button class="add__favorite" type="submit" name="project_id" value="{{ project.pk }}">
-                                    <img src="{% if request.user.person in project.likes.all %}{% static 'skillport/img/favorites.png' %}{% else %}{% static 'skillport/img/favorites_empty.png' %}{% endif %}" alt="" class="favorite">
-                                </button>
-                            </form>
-                        {% else %}
-                            <img src="{% static 'skillport/img/favorites_empty.png' %}" alt="" class="favorite">
-                        {% endif %}
+                        <form action="{% url 'like_project' %}" method="POST">
+                            {% csrf_token %}
+                            <button class="add__favorite" type="submit" name="project_id" value="{{ project.pk }}">
+                                <img src="{% if person in project.likes.all %}{% static 'skillport/img/favorites.png' %}{% else %}{% static 'skillport/img/favorites_empty.png' %}{% endif %}" alt="" class="favorite">
+                            </button>
+                        </form>
                         <h3>{{ project.likes.count }}</h3>
                         <div class="comment__info">
                             <h4>{{ project.get_comments_count }}</h4>

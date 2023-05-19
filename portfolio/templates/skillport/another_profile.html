@@ -21,18 +21,30 @@
                     </a>
                 </div>
                 <nav class="nav">
-                    <a href="{% url 'subscriptions' %}" class="nav__link">
-                        <img src="{% static 'skillport/img/add.png' %}" alt="">
-                    </a>
                     <a href="{% url 'favorites' %}" class="nav__link">
                         <img src="{% static 'skillport/img/favorites.png' %}" alt="">
                     </a>
-                    <a href="{% url 'profile' %}" class="nav__link">
-                        <img src="{% static 'skillport/img/profile.png' %}" alt="">
-                    </a>
-                    <p>{{ request.user }} | 
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </p>
+                    {% if request.user.is_anonymous %}
+                        <div class="nav__auth-btns">
+                            <form action="{% url 'login' %}">
+                                <button class="button button__header__1">Log In</button>
+                            </form>
+                            <!-- <div class="separator"></div> -->
+                            <form action="{% url 'register' %}">
+                                <button class="button button__header__2">Sign Up</button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'subscriptions' %}" class="nav__link">
+                            <img src="{% static 'skillport/img/add.png' %}" alt="">
+                        </a>
+                        <a href="{% url 'profile' %}" class="nav__link">
+                            <img src="{% static 'skillport/img/profile.png' %}" alt="">
+                        </a>
+                        <p>{{ request.user }} | 
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </p>
+                    {% endif %}
                 </nav>
 
             </div>

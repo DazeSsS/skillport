@@ -15,7 +15,7 @@
                     <div class="work">
                         <div class="image">
                             <a href="{% url 'project' project.pk %}" target = "_blank">
-                                <img src="{% if project.image %}{{ project.image.url }}{% else %}https://placehold.it/272x272{% endif %}" alt="" class="work__image">
+                                <img src="{{ project.image.url }}" alt="" class="work__image">
                             </a>
                         </div>
                         <div class="work__content">

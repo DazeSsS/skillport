@@ -12,7 +12,7 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(Person)
 class PersonAdmin(ModelAdmin):
-    list_display = ['user', 'id', 'specialization', 'links', 'about', 'profile_picture']
+    list_display = ['user', 'guest_name', 'id', 'specialization', 'links', 'about', 'profile_picture']
 
 
 @admin.register(Project)

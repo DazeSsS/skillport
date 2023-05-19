@@ -21,8 +21,14 @@ class Person(models.Model):
     profile_picture = models.ImageField(blank=True, upload_to=user_media_path, default="default/default_pfp.png")
     subscriptions = models.ManyToManyField('self', blank=True)
 
+    device = models.CharField(max_length=200, null=True, blank=True)
+    guest_name = models.CharField(max_length=30, blank=True)
+
     def __str__(self):
-        return self.user.username
+        if self.user:
+            return self.user.username
+        else:
+            return f'{self.guest_name}'
 
     def get_subscriptions_count(self):
         count = str(self.subscriptions.count())
