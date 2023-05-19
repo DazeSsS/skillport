@@ -46,7 +46,7 @@
                             </h1>
                             <h2>{{ project.author.get_subscriptions_count }}</h2>
                         </div>
-                        {% if not request.user.is_anonymous and request.user != project.author %}
+                        {% if not request.user.is_anonymous and request.user.person != project.author %}
                             <form action="{% url 'subscribe_from_project' project.pk %}" method="POST">
                                 {% csrf_token %}
                                     {% if not subscribed %}
@@ -83,7 +83,7 @@
                             <form action="{% url 'like_project' %}" method="POST">
                                 {% csrf_token %}
                                 <button class="add__favorite" type="submit" name="project_id" value="{{ project.pk }}">
-                                    <img src="{% if request.user in project.likes.all %}{% static 'skillport/img/favorites.png' %}{% else %}{% static 'skillport/img/favorites_empty.png' %}{% endif %}" alt="" class="favorite">
+                                    <img src="{% if request.user.person in project.likes.all %}{% static 'skillport/img/favorites.png' %}{% else %}{% static 'skillport/img/favorites_empty.png' %}{% endif %}" alt="" class="favorite">
                                 </button>
                             </form>
                         {% else %}
@@ -98,39 +98,41 @@
                 </div>
             </div>
 
-        <div class="description">
-            <h6>{{ project.title }}</h6>
-            <div class="description__text">
-                <p>{{ project.description }}</p>
+            <div class="description">
+                <h6>{{ project.title }}</h6>
+                <div class="description__text">
+                    <p>{{ project.description }}</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form__tittle">
-            <div>Ещё от автора</div>
-            <div class="line"></div>
-        </div>
-
-        {% for project in another %}
-            <div class="portfolio">
-                <div class="portfolio__col">
-                    <div class="work">
-                        <div class="img">
-                            <a href="{% url 'project' project.pk %}">
-                                <img src="{{ project.image.url }}" alt="" class="work__image">
-                            </a>
-                        </div>
-                        <div class="work__content">
-                            <div class="work__title">
-                                <div class="work__text">
-                                    {{ project.title }}
+            {% if another %}
+                <div class="form__tittle">
+                    <div>Ещё от автора</div>
+                    <div class="line"></div>
+                </div>
+                
+                {% for project in another %}
+                    <div class="portfolio">
+                        <div class="portfolio__col">
+                            <div class="work">
+                                <div class="img">
+                                    <a href="{% url 'project' project.pk %}">
+                                        <img src="{{ project.image.url }}" alt="" class="work__image">
+                                    </a>
+                                </div>
+                                <div class="work__content">
+                                    <div class="work__title">
+                                        <div class="work__text">
+                                            {{ project.title }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>   
+                {% endfor %}
+            {% endif %}
+        </div> 
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>   
 </body>
 </html>

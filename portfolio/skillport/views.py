@@ -12,13 +12,7 @@ from .forms import CreateCommentForm
 from .models import Comment
 
 from .models import Project, Person
-from .forms import CreateUserForm, CreateProjectForm
-
-
-class RegisterUser(CreateView):
-    form_class = CreateUserForm
-    template_name = 'skillport/sign_up.html'
-    success_url = reverse_lazy('login')
+from .forms import CreateUserForm, CreatePersonForm, CreateProjectForm
 
 
 class LoginUser(LoginView):
@@ -29,13 +23,40 @@ class LoginUser(LoginView):
         return reverse_lazy('home')
 
 
+def register(request):
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        person_form = CreatePersonForm(request.POST)
+
+        if form.is_valid() and person_form.is_valid():
+            user = form.save()
+
+            person = person_form.save(commit=False)
+            person.user = user
+
+            person.save()
+
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+
+            return redirect('home')
+    else:
+        form = CreateUserForm()
+        person_form = CreatePersonForm()
+
+    context = { 'form': form, 'person_form': person_form }
+    return render(request, 'skillport/sign_up.html', context)
+
+
 class CreateProject(LoginRequiredMixin, CreateView):
     form_class = CreateProjectForm
     template_name = 'skillport/create.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
-        instance.author = self.request.user
+        instance.author = self.request.user.person
         form.save()
         return redirect('profile')
 
@@ -51,14 +72,14 @@ def index_page(request):
 
 
 def profile_page(request):
-    user_projects = request.user.projects.order_by('-date')
+    user_projects = request.user.person.projects.order_by('-date')
     return render(request, 'skillport/profile.html', {'user_projects': user_projects})
 
 
 def another_profile_page(request, user_id):
     user = get_object_or_404(Person, pk=user_id)
     user_projects = Project.objects.filter(author=user).order_by('-date')
-    subscribed = True if user in request.user.subscriptions.all() else False
+    subscribed = True if user in request.user.person.subscriptions.all() else False
     return render(request, 'skillport/another_profile.html', {'user': user, 'user_projects': user_projects, 'subscribed': subscribed})
 
 
@@ -72,18 +93,16 @@ def project_page(request, project_id):
             form = CreateCommentForm(request.POST)
             if form.is_valid():
                 comment = form.save(commit=False)
-                comment.author = request.user
+                comment.author = request.user.person
                 comment.project = project
                 comment.save()
                 form = CreateCommentForm()
                 return redirect('project', project_id)
         else:
             messages.error(request, "Необходимо войти в аккаунт, чтобы оставлять комментарии")
-    # else:
-    #     form = CreateCommentForm()
 
     another = project.author.projects.exclude(id=project_id).order_by('-date')[:3]
-    subscribed = True if project.author in request.user.subscriptions.all() else False
+    subscribed = True if project.author in request.user.person.subscriptions.all() else False
     return render(request, 'skillport/project.html', {
         'project': project, 
         'another': another, 
@@ -95,39 +114,48 @@ def project_page(request, project_id):
 
 
 def favorites_page(request):
-    favorites = request.user.likes.order_by('-date')
+    favorites = request.user.person.likes.order_by('-date')
     return render(request, 'skillport/favorites.html', {'favorites': favorites})
 
 
 def subscriptions_page(request):
-    subscriptions = request.user.subscriptions.exclude(id=request.user.pk).order_by('username')
+    subscriptions = request.user.person.subscriptions.order_by('user')
     return render(request, 'skillport/subscriptions.html', {'subscriptions': subscriptions})
 
 
 def set_like(request):
     project = get_object_or_404(Project, id=request.POST.get('project_id'))
-    if request.user not in project.likes.all():
-        project.likes.add(request.user)
+    if request.user.person not in project.likes.all():
+        project.likes.add(request.user.person)
     else:
-        project.likes.remove(request.user)
-    return HttpResponseRedirect(reverse('project', args=[request.POST.get('project_id')]))
+        project.likes.remove(request.user.person)
+        
+    return redirect('project', request.POST.get('project_id'))
 
 
 def subscribe_from_project(request, project_id):
     user = get_object_or_404(Person, id=request.POST.get('user_id'))
-    if user not in request.user.subscriptions.all():
-        request.user.subscriptions.add(user)
+    if user not in request.user.person.subscriptions.all():
+        request.user.person.subscriptions.add(user)
     else:
-        request.user.subscriptions.remove(user)
+        request.user.person.subscriptions.remove(user)
     
-    return HttpResponseRedirect(reverse('project', args=[project_id]))
+    return redirect('project', project_id)
 
 
 def subscribe(request):
     user = get_object_or_404(Person, id=request.POST.get('user_id'))
-    if user not in request.user.subscriptions.all():
-        request.user.subscriptions.add(user)
+    if user not in request.user.person.subscriptions.all():
+        request.user.person.subscriptions.add(user)
     else:
-        request.user.subscriptions.remove(user)
+        request.user.person.subscriptions.remove(user)
     
-    return HttpResponseRedirect(reverse('another_profile', args=[request.POST.get('user_id')]))
+    return redirect('another_profile', request.POST.get('user_id'))
+
+
+def unsubscribe(request):
+    user = get_object_or_404(Person, id=request.POST.get('user_id'))
+    print(user)
+    request.user.person.subscriptions.remove(user)
+
+    return redirect('subscriptions')

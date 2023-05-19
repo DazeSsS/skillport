@@ -54,15 +54,18 @@
     </div>
     <div class="container">
         <div class="subed__all">
-            {% for user in subscriptions %}
+            {% for person in subscriptions %}
             <div class="subed__single">
-                <img src="{{ user.profile_picture.url }}" alt="" class="subed__pic">
+                <img src="{{ person.profile_picture.url }}" alt="" class="subed__pic">
                 <div class="subed__info">
-                    <a href="{% url 'another_profile' user.pk %}"><label class="subed__login">{{ user }}</label></a>
+                    <a href="{% url 'another_profile' person.pk %}"><label class="subed__login">{{ person }}</label></a>
                     <br>
-                    <label class="subed__counter">{{ user.get_subscriptions_count }}</label>
+                    <label class="subed__counter">{{ person.get_subscriptions_count }}</label>
                 </div>
-                <button class="sub__button">Вы подписаны</button>
+                <form action="{% url 'unsubscribe' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="sub__button" type="submit" name="user_id" value="{{ person.pk }}">Вы подписаны</button> 
+                </form>
             </div>
             {% endfor %}
         </div>

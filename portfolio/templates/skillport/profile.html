@@ -46,7 +46,7 @@
                     <button><img src="{% static 'skillport/img/edit.png' %}"></button>
                     <a href="#"><img src="{% static 'skillport/img/info.png' %}" class="a-bit-lower" ></a> 
                 </div>
-                <img src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}https://placehold.it/486x486{% endif %}" alt="" class="profile-photo">
+                <img src="{{ request.user.person.profile_picture.url }}" alt="" class="profile-photo">
                 <input class="login" value="{{ request.user.username }}" placeholder="Логин">
             </div>
             <div class="box-add">
@@ -65,13 +65,13 @@
                     </div>
                 </div>
                 <h3 class="title">Специализация</h3>
-                <input class="login big-input" value="{{ request.user.specialization }}">
+                <input class="login big-input" value="{{ request.user.person.specialization }}">
                 <h3 class="title">Контакты</h3>
-                <input class="login big-input" value="{{ request.user.links }}">
+                <input class="login big-input" value="{{ request.user.person.links }}">
             </div>
         </div>
         <div class="about-block">
-            <textarea contenteditable="true" class="about" placeholder="О себе..." >{{ request.user.about }}</textarea>
+            <textarea contenteditable="true" class="about" placeholder="О себе..." >{{ request.user.person.about }}</textarea>
         </div>
         <form action="{% url 'create' %}">
             <div class="create">
@@ -86,7 +86,7 @@
                 <div class="portfolio__col">
                     <div class="work">
                         <a href="{% url 'project' project.pk %}" target = "_blank">
-                            <img src="{% if project.image %}{{ project.image.url }}{% else %}https://placehold.it/272x272{% endif %}" alt="" class="work__image">
+                            <img src="{{ project.image.url }}" alt="" class="work__image">
                         </a>
                         <div class="work__content">
                             <div class="work__title">
