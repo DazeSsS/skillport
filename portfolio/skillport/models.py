@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import AbstractUser
-from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 import uuid
 
@@ -14,16 +13,16 @@ def project_media_path(instance, filename):
     return 'user_{0}/project_{1}/{2}'.format(instance.author.id, instance.title.strip().replace(' ', '-'), filename)
 
 
-class Person(AbstractUser):
-    email = models.EmailField(_("email address"), blank=False, unique=True)
+class Person(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     specialization = models.CharField(max_length=100, blank=True)
     links = models.TextField(blank=True)
     about = models.TextField(blank=True)
     profile_picture = models.ImageField(blank=True, upload_to=user_media_path, default="default/default_pfp.png")
-    subscriptions = models.ManyToManyField('self')
+    subscriptions = models.ManyToManyField('self', blank=True)
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
     def get_subscriptions_count(self):
         count = str(self.subscriptions.count())
@@ -34,8 +33,6 @@ class Person(AbstractUser):
         else:
             return f'{count} Подписчиков'
 
-User = get_user_model()
-
 
 class Project(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, primary_key=True)
@@ -44,8 +41,8 @@ class Project(models.Model):
     image = models.ImageField(blank=True, upload_to=project_media_path, default="default/default_pfp.png")
     content_type = models.ForeignKey('ProjectType', on_delete=models.PROTECT)
     date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects')
-    likes = models.ManyToManyField(User, related_name='likes')
+    author = models.ForeignKey('Person', on_delete=models.CASCADE, related_name='projects')
+    likes = models.ManyToManyField('Person', blank=True, related_name='likes')
 
     def __str__(self):
         return self.title
@@ -68,8 +65,8 @@ class ProjectType(models.Model):
 
 
 class Comment(models.Model):
-    project = models.ForeignKey(Project, related_name="comments", on_delete=models.CASCADE)
-    author = models.ForeignKey(Person, null=True, related_name='comments', on_delete=models.CASCADE)
+    project = models.ForeignKey('Project', related_name="comments", on_delete=models.CASCADE)
+    author = models.ForeignKey('Person', null=True, related_name='comments', on_delete=models.CASCADE)
     body = models.TextField(blank=False)
     created = models.DateTimeField(auto_now_add=True)
     
