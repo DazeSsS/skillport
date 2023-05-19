@@ -104,7 +104,10 @@ def profile_page(request):
 def another_profile_page(request, user_id):
     user = get_object_or_404(Person, pk=user_id)
     user_projects = Project.objects.filter(author=user).order_by('-date')
-    subscribed = True if user in request.user.person.subscriptions.all() else False
+    try:
+        subscribed = True if user in request.user.person.subscriptions.all() else False
+    except:
+        subscribed = False
     return render(request, 'skillport/another_profile.html', {'user': user, 'user_projects': user_projects, 'subscribed': subscribed})
 
 
