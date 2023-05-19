@@ -115,7 +115,7 @@ def project_page(request, project_id):
     device, person = check_guest(request)
     project = get_object_or_404(Project, pk=project_id)
     comments = Comment.objects.filter(project = project)
-    another = project.author.projects.exclude(id=project_id).order_by('-date')[:3]
+    another = project.author.projects.exclude(id=project_id).order_by('-date')[:4]
 
     form = CreateCommentForm()
     if request.method == "POST": 

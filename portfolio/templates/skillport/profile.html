@@ -46,7 +46,9 @@
                     <button><img src="{% static 'skillport/img/edit.png' %}"></button>
                     <a href="#"><img src="{% static 'skillport/img/info.png' %}" class="a-bit-lower" ></a> 
                 </div>
-                <img src="{{ request.user.person.profile_picture.url }}" alt="" class="profile-photo">
+                <div class="avatar">
+                    <img src="{{ request.user.person.profile_picture.url }}" alt="" class="profile-photo">
+                </div>
                 <input class="login" value="{{ request.user.username }}" placeholder="Логин">
             </div>
             <div class="box-add">
@@ -86,11 +88,13 @@
                 <div class="portfolio__col">
                     <div class="work">
                         <a href="{% url 'project' project.pk %}" target = "_blank">
-                            <img src="{{ project.image.url }}" alt="" class="work__image">
+                            <div class="image">
+                                <img src="{{ project.image.url }}" alt="" class="work__image">
+                            </div>
                         </a>
                         <div class="work__content">
                             <div class="work__title">
-                                <p>{{ project.title }}</p>
+                                <p class="work__text">{{ project.title }}</p>
                             </div>
                             <img src="{% static 'skillport/img/edit.png' %}" alt="" class="work__favorites">
                         </div>

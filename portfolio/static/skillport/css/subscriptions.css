@@ -28,7 +28,7 @@ a{
 }
 .container {
     width: 100%;
-    max-width: 1320px;
+    max-width: 1700px;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
@@ -104,6 +104,7 @@ a{
 
 .subed__all{
     display:flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .subed__single{

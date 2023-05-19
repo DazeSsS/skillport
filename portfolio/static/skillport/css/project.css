@@ -16,6 +16,8 @@ body {
     box-sizing: border-box;
 }
 
+
+
 .container {
     width: 100%;
     max-width: 1320px;
@@ -317,6 +319,7 @@ h6{
 .work__text{
     font-size: 25px;
     color: #584937;
+    overflow: hidden;
 }
 
 .work__favorites{
