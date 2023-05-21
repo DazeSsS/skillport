@@ -73,16 +73,20 @@ def register(request):
     return render(request, 'skillport/sign_up.html', context)
 
 
-class CreateProject(LoginRequiredMixin, CreateView):
-    form_class = CreateProjectForm
-    template_name = 'skillport/create.html'
-    login_url="/login/"
+@login_required(login_url="/login/")
+def create_project(request):
+    if request.method == 'POST':
+        form = CreateProjectForm(request.POST)
 
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.author = self.request.user.person
-        form.save()
-        return redirect('profile')
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user.person
+            instance.save()
+            return redirect('profile')
+    else:
+        form = CreateProjectForm()
+
+    return render(request, 'skillport/create.html', {'form': form})
 
 
 def logout_user(request):
