@@ -13,6 +13,10 @@ def project_media_path(instance, filename):
     return 'user_{0}/project_{1}/{2}'.format(instance.author.id, instance.title.strip().replace(' ', '-'), filename)
 
 
+def additional_images_path(instance, filename):
+    return 'user_{0}/project_{1}/{2}'.format(instance.project.author.id, instance.project.title.strip().replace(' ', '-'), filename)
+
+
 class Person(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     specialization = models.CharField(max_length=100, blank=True)
@@ -79,5 +83,6 @@ class Comment(models.Model):
     def __str__(self):
         return self.body
     
-# class AdditionalImages(models.Model):
-#     project = models.ForeignKey(Project, related_name="additional_images", on_delete=models.CASCADE)
+class AdditionalImages(models.Model):
+    project = models.ForeignKey(Project, related_name="additional_images", on_delete=models.CASCADE)
+    additional_image = models.ImageField(blank=True, upload_to=additional_images_path, default="default/default_pfp.png")

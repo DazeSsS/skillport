@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 from django import forms
-from .models import Person, Project, Comment
+from .models import *
 
 class CreateUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -69,3 +69,14 @@ class CreateCommentForm(ModelForm):
         super().__init__(*args, **kwargs)
 
         self.fields['body'].widget.attrs.update({'class': 'input comment'})
+
+
+class CreateAdditionalImageForm(ModelForm):
+    additional_image = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={"multiple": True})
+        )
+
+    class Meta:
+        model = AdditionalImages
+        fields = ["additional_image"]

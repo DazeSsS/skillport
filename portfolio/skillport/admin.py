@@ -25,6 +25,11 @@ class CommentAdmin(ModelAdmin):
     list_display = ['project', 'author', 'body',  'created']
 
 
+@admin.register(AdditionalImages)
+class AdditionalImageAdmin(ModelAdmin):
+    list_display = ['project']
+
+
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(ProjectType)

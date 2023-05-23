@@ -8,11 +8,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
-from .forms import CreateCommentForm
-from .models import Comment
-
-from .models import Project, Person
-from .forms import CreateUserForm, CreatePersonForm, CreateProjectForm
+from .forms import *
+from .models import *
 
 # my functions
 def check_guest(request):
@@ -21,12 +18,11 @@ def check_guest(request):
         guest = Person.objects.create(device=device)
         guest.guest_name = f'guest_{guest.pk}'
         guest.save()
-
     return device, Person.objects.get(device=device)
+
 
 def like(request, user):
     project = get_object_or_404(Project, id=request.POST.get('project_id'))
-
     if user not in project.likes.all():
         project.likes.add(user)
     else:
@@ -37,7 +33,6 @@ def like(request, user):
 class LoginUser(LoginView):
     form_class = AuthenticationForm
     template_name = 'skillport/log_in.html'
-
     def get_success_url(self):
         return reverse_lazy('home')
 
@@ -47,28 +42,22 @@ def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         person_form = CreatePersonForm(request.POST)
-
         if form.is_valid() and person_form.is_valid():
             user = form.save()
-
             person.user = user
             person.specialization = person_form.cleaned_data['specialization']
             person.links = person_form.cleaned_data['links']
             person.about = person_form.cleaned_data['about']
             person.profile_picture = person_form.cleaned_data['profile_picture']
-
             person.save()
-
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-
             return redirect('home')
     else:
         form = CreateUserForm()
         person_form = CreatePersonForm()
-
     context = { 'form': form, 'person_form': person_form }
     return render(request, 'skillport/sign_up.html', context)
 
@@ -76,17 +65,19 @@ def register(request):
 @login_required(login_url="/login/")
 def create_project(request):
     if request.method == 'POST':
-        form = CreateProjectForm(request.POST)
-
+        form = CreateProjectForm(request.POST, request.FILES)
+        files = request.FILES.getlist("additional_image")
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user.person
             instance.save()
+            for file in files:
+                AdditionalImages.objects.create(project=instance, additional_image=file)
             return redirect('profile')
     else:
         form = CreateProjectForm()
-
-    return render(request, 'skillport/create.html', {'form': form})
+        imageform = CreateAdditionalImageForm
+    return render(request, 'skillport/create.html', {'form': form, 'imageform': imageform})
 
 
 def logout_user(request):
@@ -120,7 +111,7 @@ def project_page(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     comments = Comment.objects.filter(project = project)
     another = project.author.projects.exclude(id=project_id).order_by('-date')[:4]
-
+    images = [item.additional_image for item in list(project.additional_images.all())]
     form = CreateCommentForm()
     if request.method == "POST": 
         form = CreateCommentForm(request.POST)
@@ -134,22 +125,20 @@ def project_page(request, project_id):
             comment.save()
             form = CreateCommentForm()
             return redirect('project', project_id)
-
     if not request.user.is_anonymous:
         person = request.user.person
-
     try:
         subscribed = True if project.author in request.user.person.subscriptions.all() else False
     except:
         subscribed = False
-
     context = {
         'project': project, 
         'another': another, 
         'subscribed': subscribed, 
         'form': form,
         'comments': comments,
-        'person': person
+        'person': person,
+        'images': images
         }
     return render(request, 'skillport/project.html', context)
 
@@ -160,7 +149,6 @@ def favorites_page(request):
         favorites = person.likes.order_by('-date')
     else:
         favorites = request.user.person.likes.order_by('-date')
-
     return render(request, 'skillport/favorites.html', {'favorites': favorites})
 
 
@@ -176,7 +164,6 @@ def set_like(request):
     else:
         device, person = check_guest(request)
         like(request, person)
-        
     return redirect('project', request.POST.get('project_id'))
 
 
@@ -187,7 +174,6 @@ def subscribe_from_project(request, project_id):
         request.user.person.subscriptions.add(user)
     else:
         request.user.person.subscriptions.remove(user)
-    
     return redirect('project', project_id)
 
 
@@ -198,7 +184,6 @@ def subscribe(request):
         request.user.person.subscriptions.add(user)
     else:
         request.user.person.subscriptions.remove(user)
-    
     return redirect('another_profile', request.POST.get('user_id'))
 
 
@@ -206,5 +191,4 @@ def subscribe(request):
 def unsubscribe(request):
     user = get_object_or_404(Person, id=request.POST.get('user_id'))
     request.user.person.subscriptions.remove(user)
-
     return redirect('subscriptions')

@@ -10,86 +10,62 @@
     SkillPort - Создание проекта
 {% endblock %}
 
-{% comment %} <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Create Project</title>
-</head> {% endcomment %}
-
-{% comment %} <body> {% endcomment %}
-    {% block content %}
-        <div class="container">
-            <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="create__project">
-                    <div class="header">
-                        <div class="form__tittle">
-                            <div class="line"></div>
-                            <div>Создание проекта</div>
-                            <div class="line"></div>
-                            <button>
-                                <img src="" alt="" class="close">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="name">
-                        <h1>Название</h1>
-                        {% comment %} <input type="text" class="title"> {% endcomment %}
-                        {{ form.title }}
-                    </div>
-                    <div class="main__information">
-                        <div class="pictures">
-                            <div class="upload">
-                                <h1>Обложка</h1>
-                                {% comment %} <input type="button" class="input-button"> {% endcomment %}
-                                {{ form.image }}
-                            </div>
-                            <div class="main__pictures">
-                                <img src="https://placehold.it/400x400" alt="" class="main__picture">
-                            </div> 
-                        </div>
-                        <div class="content">
-                            <h1>Направление</h1>
-                            <div class="dropdown">
-                                {% comment %} <li class="categories"><a href="#" class="categories drpdwn">&bigtriangledown;</a>            
-                                    <ul class="dropdown-menu">
-                                        <li><button class="category" href="#">Дизайн</button></li>
-                                        <li><button class="category" href="#">Код</button></li>
-                                        <li><button class="category" href="#">...</button></li>
-                                    </ul>
-                                </li> {% endcomment %}
-                                {{ form.content_type }}
-                            </div>
-                            <div class="upload">
-                                <h1>Дополнительные фото</h1>
-                                <input type="file" class="input-button">
-                            </div>
-                            <div class="other__pictures">
-                                <img src="https://placehold.it/125x125" alt="" class="other__picture">
-                                <img src="https://placehold.it/125x125" alt="" class="other__picture">
-                                <img src="https://placehold.it/125x125" alt="" class="other__picture">
-                                <img src="https://placehold.it/125x125" alt="" class="other__picture">
-                                <img src="https://placehold.it/125x125" alt="" class="other__picture">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <h2>Описание</h2>
-                        {% comment %} <textarea type="text"></textarea> {% endcomment %}
-                        {{ form.description }}
-                    </div>
-                    <div class="publish">
-                        <button class="publish__button">Опубликовать</button>
+{% block content %}
+    <div class="container">
+        <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="create__project">
+                <div class="header">
+                    <div class="form__tittle">
+                        <div class="line"></div>
+                        <div>Создание проекта</div>
+                        <div class="line"></div>
+                        <button>
+                            <img src="" alt="" class="close">
+                        </button>
                     </div>
                 </div>
-        </div>
-    {% endblock content %}
-{% comment %} </body>
-</html> {% endcomment %}
+                <div class="name">
+                    <h1>Название</h1>
+                    {{ form.title }}
+                </div>
+                <div class="main__information">
+                    <div class="pictures">
+                        <div class="upload">
+                            <h1>Обложка</h1>
+                            {{ form.image }}
+                        </div>
+                        <div class="main__pictures">
+                            <img src="https://placehold.it/400x400" alt="" class="main__picture">
+                        </div> 
+                    </div>
+                    <div class="content">
+                        <h1>Направление</h1>
+                        <div class="dropdown">
+                            {{ form.content_type }}
+                        </div>
+                        <div class="upload">
+                            <h1>Дополнительные фото</h1>
+                            {{ imageform.managementform }}
+                            {{ imageform.additional_image }}  
+                            {% comment %} <input type="file" class="input-button"> {% endcomment %}
+                        </div>
+                        <div class="other__pictures">
+                            <img src="https://placehold.it/125x125" alt="" class="other__picture">
+                            <img src="https://placehold.it/125x125" alt="" class="other__picture">
+                            <img src="https://placehold.it/125x125" alt="" class="other__picture">
+                            <img src="https://placehold.it/125x125" alt="" class="other__picture">
+                            <img src="https://placehold.it/125x125" alt="" class="other__picture">
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <h2>Описание</h2>
+                    {{ form.description }}
+                </div>
+                <div class="publish">
+                    <button class="publish__button">Опубликовать</button>
+                </div>
+            </div>
+    </div>
+{% endblock content %}
