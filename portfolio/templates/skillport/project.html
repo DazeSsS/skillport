@@ -109,6 +109,12 @@
                 </div>
             </div>
 
+            <div class="project__files__temp">
+                {% for file in files %}
+                    {{ file.name }} <br>
+                {% endfor %}
+            </div>
+
             <div class="description">
                 <h6>{{ project.title }}</h6>
                 <div class="description__text">
