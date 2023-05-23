@@ -34,6 +34,7 @@
                         <div class="upload">
                             <h1>Обложка</h1>
                             {{ form.image }}
+                            <label for="input-button" class="input-button-label"></label> 
                         </div>
                         <div class="main__pictures">
                             <img src="https://placehold.it/400x400" alt="" class="main__picture">
@@ -47,8 +48,8 @@
                         <div class="upload">
                             <h1>Дополнительные фото</h1>
                             {{ imageform.managementform }}
-                            {{ imageform.additional_image }}  
-                            {% comment %} <input type="file" class="input-button"> {% endcomment %}
+                            {{ imageform.additional_image }} 
+                            <label for="input-button" class="input-button-label"></label> 
                         </div>
                         <div class="other__pictures">
                             <img src="https://placehold.it/125x125" alt="" class="other__picture">

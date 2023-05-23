@@ -57,6 +57,7 @@ class CreateProjectForm(ModelForm):
         self.fields['title'].widget.attrs.update({'class': 'input title'})
         self.fields['description'].widget.attrs.update({'class': 'input description-input'})
         self.fields['image'].widget.attrs.update({'class': 'input-button'})
+        self.fields['content_type'].widget.attrs.update({'class': 'dropdown__menu'})
 
 
 class CreateCommentForm(ModelForm):
@@ -74,7 +75,7 @@ class CreateCommentForm(ModelForm):
 class CreateAdditionalImageForm(ModelForm):
     additional_image = forms.ImageField(
         required=False,
-        widget=forms.ClearableFileInput(attrs={"multiple": True})
+        widget=forms.ClearableFileInput(attrs={"multiple": True, "class": "input-button"})
         )
 
     class Meta:

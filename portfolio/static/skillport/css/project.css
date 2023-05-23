@@ -153,6 +153,16 @@ h2{
     display: flex;
 }
 
+.comment-field{
+    width: 400px;
+    height: 103px;
+    background: #C2B3A2;
+}
+
+textarea:focus{
+    outline:1px solid #887157;
+}
+
 .comment{
     width: 400px;
     height: 100px;
@@ -162,8 +172,14 @@ h2{
     border-bottom-left-radius: 30px;
     display: flex;
     padding-left: 15px;
-    padding-right: 10px;
+    padding-right: 80px;
     resize: none;
+}
+
+.comment-text{
+    line-break: anywhere;
+    hyphens: auto;
+    padding-right: 20px;
 }
 
 .comment:focus {
@@ -337,4 +353,23 @@ h6{
 *:before,
 *:after {
 box-sizing: border-box;
+}
+.comment-field{
+    display: flex;
+}
+.comment-field input{
+    opacity: 0;
+    position:absolute;
+    margin-left: 330px;
+    margin-top: 35px;
+    height: 30px;
+    width:50px;
+}
+.comment-field img{
+    opacity: 1;
+    position:absolute;
+    margin-left: 330px;
+    margin-top: 35px;
+    height: 30px;
+    width:50px;
 }

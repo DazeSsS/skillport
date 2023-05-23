@@ -74,7 +74,8 @@
                                 {% else %}
                                     <p><b>{{ comment.author }}</b></p>
                                 {% endif %}
-                                {{ comment.body }} <br>
+                                <p class="comment-text"> {{ comment.body }}</p>
+                                
                                 {{ comment.created }}
                                 <hr>    
                             {% endfor %}
@@ -83,8 +84,11 @@
                         <div class="write__comment">
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                {{form.body}}
-                                <input type="submit" value="Отправить"> 
+                                <div class="comment-field">
+                                    {{form.body}}
+                                    <img src="/static/skillport/img/send.png">
+                                    <input type="submit"> 
+                                </div>
                             </form>
                         </div>
                     </div>
