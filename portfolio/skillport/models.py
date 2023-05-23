@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
-
 import uuid
 
 
@@ -13,7 +12,7 @@ def project_media_path(instance, filename):
     return 'user_{0}/project_{1}/{2}'.format(instance.author.id, instance.title.strip().replace(' ', '-'), filename)
 
 
-def additional_images_path(instance, filename):
+def additional_media_path(instance, filename):
     return 'user_{0}/project_{1}/{2}'.format(instance.project.author.id, instance.project.title.strip().replace(' ', '-'), filename)
 
 
@@ -24,7 +23,6 @@ class Person(models.Model):
     about = models.TextField(blank=True)
     profile_picture = models.ImageField(blank=True, upload_to=user_media_path, default="default/default_pfp.png")
     subscriptions = models.ManyToManyField('self', blank=True)
-
     device = models.CharField(max_length=200, null=True, blank=True)
     guest_name = models.CharField(max_length=30, blank=True)
 
@@ -85,4 +83,9 @@ class Comment(models.Model):
     
 class AdditionalImages(models.Model):
     project = models.ForeignKey(Project, related_name="additional_images", on_delete=models.CASCADE)
-    additional_image = models.ImageField(blank=True, upload_to=additional_images_path, default="default/default_pfp.png")
+    additional_image = models.ImageField(blank=True, upload_to=additional_media_path, default="default/default_pfp.png")
+
+
+class AttachedFiles(models.Model):
+    project = models.ForeignKey(Project, related_name="attached_files", on_delete=models.CASCADE)
+    attached_file = models.FileField(blank=True, upload_to=additional_media_path, default="default/default_pfp.png")

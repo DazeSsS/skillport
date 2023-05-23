@@ -81,3 +81,14 @@ class CreateAdditionalImageForm(ModelForm):
     class Meta:
         model = AdditionalImages
         fields = ["additional_image"]
+
+
+class CreateAttachedFileForm(ModelForm):
+    attached_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={"multiple": True, "class": "input-button"})
+        )
+
+    class Meta:
+        model = AdditionalImages
+        fields = ["attached_file"]

@@ -66,18 +66,22 @@ def register(request):
 def create_project(request):
     if request.method == 'POST':
         form = CreateProjectForm(request.POST, request.FILES)
-        files = request.FILES.getlist("additional_image")
+        images = request.FILES.getlist("additional_image")
+        files = request.FILES.getlist("attached_file")
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user.person
             instance.save()
+            for image in images:
+                AdditionalImages.objects.create(project=instance, additional_image=image)
             for file in files:
-                AdditionalImages.objects.create(project=instance, additional_image=file)
+                AttachedFiles.objects.create(project=instance, attached_file=file)
             return redirect('profile')
     else:
         form = CreateProjectForm()
         imageform = CreateAdditionalImageForm
-    return render(request, 'skillport/create.html', {'form': form, 'imageform': imageform})
+        fileform = CreateAttachedFileForm
+    return render(request, 'skillport/create.html', {'form': form, 'imageform': imageform, 'fileform': fileform})
 
 
 def logout_user(request):
@@ -112,6 +116,7 @@ def project_page(request, project_id):
     comments = Comment.objects.filter(project = project)
     another = project.author.projects.exclude(id=project_id).order_by('-date')[:4]
     images = [item.additional_image for item in list(project.additional_images.all())]
+    files = [item.attached_file for item in list(project.attached_files.all())]
     form = CreateCommentForm()
     if request.method == "POST": 
         form = CreateCommentForm(request.POST)
@@ -138,7 +143,8 @@ def project_page(request, project_id):
         'form': form,
         'comments': comments,
         'person': person,
-        'images': images
+        'images': images,
+        'files': files
         }
     return render(request, 'skillport/project.html', context)
 

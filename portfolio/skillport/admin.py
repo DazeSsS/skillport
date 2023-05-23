@@ -3,7 +3,6 @@ from django.contrib.admin import ModelAdmin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from .models import *
-from .forms import CreateUserForm
 
 
 class CustomUserAdmin(UserAdmin):
@@ -27,6 +26,11 @@ class CommentAdmin(ModelAdmin):
 
 @admin.register(AdditionalImages)
 class AdditionalImageAdmin(ModelAdmin):
+    list_display = ['project']
+
+
+@admin.register(AttachedFiles)
+class AttachedFileAdmin(ModelAdmin):
     list_display = ['project']
 
 
