@@ -230,3 +230,48 @@ body {
     display: flex;
     align-items: center;
   }
+
+.nav__auth-btns {
+  position: relative;
+  background: #C2B3A1;
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.nav__auth-btns::after {
+  content: '';
+  background: #282323;
+  width: 8px;
+  height: 70px;
+  position: absolute;
+  top: -10px;
+  transform: rotate(27deg);
+  right: 51%;
+}
+
+.button__header__1 {
+  align-items: center;
+  display: flex;
+  height: 42px;
+  padding-left: 20px;
+  background: none;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  border: 2px solid transparent;
+  font-size: 20px;
+}
+
+.button__header__2 {
+  align-items: center;
+  display: flex;
+  height: 42px;
+  background: none;
+  padding-right: 20px;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  border: 2px solid transparent;
+  font-size: 20px;
+}
