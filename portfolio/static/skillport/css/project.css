@@ -246,6 +246,10 @@ h5{
     color: #615C5C;
 }
 
+.project__files__temp {
+    margin-left: 30px;
+}
+
 .description{
     display: flex;
     justify-content: center;

@@ -2,12 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView
 from .forms import *
 from .models import *
 
@@ -86,7 +84,9 @@ def create_project(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('home')
+    response = HttpResponseRedirect('/')
+    response.delete_cookie('device')
+    return response
 
 
 def index_page(request):
@@ -102,6 +102,9 @@ def profile_page(request):
 
 def another_profile_page(request, user_id):
     user = get_object_or_404(Person, pk=user_id)
+    if user == request.user.person:
+        return redirect('profile')
+    
     user_projects = Project.objects.filter(author=user).order_by('-date')
     try:
         subscribed = True if user in request.user.person.subscriptions.all() else False
@@ -115,8 +118,6 @@ def project_page(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     comments = Comment.objects.filter(project = project)
     another = project.author.projects.exclude(id=project_id).order_by('-date')[:4]
-    images = [item.additional_image for item in list(project.additional_images.all())]
-    files = [item.attached_file for item in list(project.attached_files.all())]
     form = CreateCommentForm()
     if request.method == "POST": 
         form = CreateCommentForm(request.POST)
@@ -130,21 +131,22 @@ def project_page(request, project_id):
             comment.save()
             form = CreateCommentForm()
             return redirect('project', project_id)
+        
     if not request.user.is_anonymous:
         person = request.user.person
+
     try:
         subscribed = True if project.author in request.user.person.subscriptions.all() else False
     except:
         subscribed = False
+
     context = {
         'project': project, 
         'another': another, 
         'subscribed': subscribed, 
         'form': form,
         'comments': comments,
-        'person': person,
-        'images': images,
-        'files': files
+        'person': person
         }
     return render(request, 'skillport/project.html', context)
 

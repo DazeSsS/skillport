@@ -2,18 +2,19 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 import uuid
+import os
 
 
 def user_media_path(instance, filename):
-    return 'user_{0}/profile/{1}'.format(instance.user.id, filename)
+    return '{0}/profile/{1}'.format(instance.user, filename)
 
 
 def project_media_path(instance, filename):
-    return 'user_{0}/project_{1}/{2}'.format(instance.author.id, instance.title.strip().replace(' ', '-'), filename)
+    return '{0}/project_{1}/{2}'.format(instance.author, instance.title.strip().replace(' ', '-'), filename)
 
 
 def additional_media_path(instance, filename):
-    return 'user_{0}/project_{1}/{2}'.format(instance.project.author.id, instance.project.title.strip().replace(' ', '-'), filename)
+    return '{0}/project_{1}/{2}'.format(instance.project.author, instance.project.title.strip().replace(' ', '-'), filename)
 
 
 class Person(models.Model):
@@ -89,3 +90,6 @@ class AdditionalImages(models.Model):
 class AttachedFiles(models.Model):
     project = models.ForeignKey(Project, related_name="attached_files", on_delete=models.CASCADE)
     attached_file = models.FileField(blank=True, upload_to=additional_media_path, default="default/default_pfp.png")
+
+    def filename(self):
+        return os.path.basename(self.attached_file.name)
