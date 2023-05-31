@@ -47,7 +47,9 @@
 
                 <div class="aside">
                     <div class="aside__header">
-                        <img src="{% static 'skillport/img/avatar.svg' %}" class="user__avatar">
+                        <div class="user__image">
+                            <img src="{{ project.author.profile_picture.url }}" class="user__avatar">
+                        </div>
                         <div class="user__info">
                             <h1>
                                 <a href="{% url 'another_profile' project.author.pk %}">{{ project.author }}</a>
