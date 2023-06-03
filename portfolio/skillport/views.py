@@ -90,8 +90,19 @@ def logout_user(request):
 
 
 def index_page(request):
-    projects = Project.objects.order_by('-date')
-    return render(request, 'skillport/index.html', {'projects': projects})
+    try:
+        selected = request.GET['category']
+    except:
+        selected = 'all'
+
+    if selected == 'all':
+        projects = Project.objects.order_by('-date')
+    else:
+        selected = ProjectType.objects.get(name=request.GET['category'])
+        projects = Project.objects.filter(content_type=selected).order_by('-date')
+
+    categories = ProjectType.objects.all()
+    return render(request, 'skillport/index.html', {'projects': projects, 'categories': categories, 'selected': selected})
 
 
 @login_required(login_url="/login/")

@@ -258,7 +258,8 @@ a{
 
 .work__text{
   text-align: center;
-  font-size: 30px;
+  font-size: 26px;
+  line-height: 26px;
   color: #584937;
   word-wrap: break-word;
 }

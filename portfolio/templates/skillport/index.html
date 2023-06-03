@@ -47,12 +47,20 @@
                     <input class="search__text" placeholder="Поиск...">
                 </div>
                 <div class="dropdown">   
-                    <form>
-                        <select class="dropdown__menu">
-                            <option class="category">Все категории</option>
-                            <option class="category">Дизайн</option>
-                            <option class="category">Код</option>
-                            <option class="category">JavaScript</option>
+                    <form method="GET" id="category">
+                        <select class="dropdown__menu" name="category" onchange="document.getElementById('category').submit()">
+                            {% if selected == "all" %}
+                                <option class="category" value="all" selected>Все категории</option>
+                            {% else %}
+                                <option class="category" value="all">Все категории</option>
+                            {% endif %}
+                            {% for cat in categories %}
+                                {% if selected == cat %}
+                                    <option class="category" value="{{ cat }}" selected>{{ cat }}</option>
+                                {% else %}
+                                    <option class="category" value="{{ cat }}">{{ cat }}</option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                     </form>    
                 </div>
@@ -80,4 +88,8 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+    </script>
 {% endblock %}
