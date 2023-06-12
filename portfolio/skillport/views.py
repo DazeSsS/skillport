@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.contrib import messages
-from django.urls import reverse_lazy, reverse
 from .forms import *
 from .models import *
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
+from django.db.models import Q
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+
 
 # my functions
 def check_guest(request):
@@ -94,15 +95,26 @@ def index_page(request):
         selected = request.GET['category']
     except:
         selected = 'all'
-
     if selected == 'all':
         projects = Project.objects.order_by('-date')
     else:
         selected = ProjectType.objects.get(name=request.GET['category'])
         projects = Project.objects.filter(content_type=selected).order_by('-date')
+   
+    search_query = ''
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
+    projects = Project.objects.filter(
+        Q(title__icontains=search_query) |
+        Q(description__icontains=search_query))
 
     categories = ProjectType.objects.all()
-    return render(request, 'skillport/index.html', {'projects': projects, 'categories': categories, 'selected': selected})
+    return render(request, 'skillport/index.html', {
+        'projects': projects, 
+        'categories': categories, 
+        'selected': selected,
+        'search_query': search_query,
+        })
 
 
 @login_required(login_url="/login/")
