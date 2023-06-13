@@ -91,22 +91,21 @@ def logout_user(request):
 
 
 def index_page(request):
-    try:
-        selected = request.GET['category']
-    except:
-        selected = 'all'
-    if selected == 'all':
+    selected = request.GET.get('category')
+
+    if selected == None or selected == 'all':
         projects = Project.objects.order_by('-date')
     else:
-        selected = ProjectType.objects.get(name=request.GET['category'])
+        selected = ProjectType.objects.get(name=request.GET.get('category'))
         projects = Project.objects.filter(content_type=selected).order_by('-date')
    
     search_query = ''
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
-    projects = Project.objects.filter(
+        
+    projects = projects.filter(
         Q(title__icontains=search_query) |
-        Q(description__icontains=search_query))
+        Q(description__icontains=search_query)).order_by('-date')
 
     categories = ProjectType.objects.all()
     return render(request, 'skillport/index.html', {

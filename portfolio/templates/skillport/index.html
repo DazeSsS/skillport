@@ -42,31 +42,31 @@
 {% block content %}
     <div class="works">
         <div class="container">
-            <div class="nav-links">
-                <form class="search" action="#" method="GET">  
+            <form method="GET" id="search">
+                <div class="nav-links">
                     <div class="search">
                         <input class="search__text" value="{{ search_query }}" placeholder="Поиск..." name="search_query" type="text">
                     </div>
-                </form>
-                <div class="dropdown">   
-                    <form method="GET" id="category">
-                        <select class="dropdown__menu" name="category" onchange="document.getElementById('category').submit()">
-                            {% if selected == "all" %}
-                                <option class="category" value="all" selected>Все категории</option>
-                            {% else %}
-                                <option class="category" value="all">Все категории</option>
-                            {% endif %}
-                            {% for cat in categories %}
-                                {% if selected == cat %}
-                                    <option class="category" value="{{ cat }}" selected>{{ cat }}</option>
+                    <div class="dropdown">   
+                        <div>
+                            <select class="dropdown__menu" name="category" onchange="document.getElementById('search').submit()">
+                                {% if selected == "all" %}
+                                    <option class="category" value="all" selected>Все категории</option>
                                 {% else %}
-                                    <option class="category" value="{{ cat }}">{{ cat }}</option>
+                                    <option class="category" value="all">Все категории</option>
                                 {% endif %}
-                            {% endfor %}
-                        </select>
-                    </form>    
+                                {% for cat in categories %}
+                                    {% if selected == cat %}
+                                        <option class="category" value="{{ cat }}" selected>{{ cat }}</option>
+                                    {% else %}
+                                        <option class="category" value="{{ cat }}">{{ cat }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div> 
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <div class="portfolio">
             {% for project in projects %}
