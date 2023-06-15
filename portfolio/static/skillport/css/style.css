@@ -54,6 +54,7 @@ body {
 
 .user__avatar img {
   height: 100%;
+  margin-top: 20px;
 }
 
 .nav {

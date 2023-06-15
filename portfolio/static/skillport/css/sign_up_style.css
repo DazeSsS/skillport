@@ -62,6 +62,8 @@ body {
 .logo {
     border-radius: 30px;
     margin-left: 45px;
+    height: 300px;
+    width: 375px;
 }
 
 .main__content {
@@ -257,6 +259,9 @@ title_1 {
 .user__setting {
     display: flex;
     gap: 10px;
+    opacity:0;
+    position: absolute;
+    margin-top: 65px;
 }
 
 .contract {
@@ -280,7 +285,7 @@ title_2 {
     width: 200px;
     height: 35px;
     margin-top: 150px;
-    margin-left: 120px;
+    margin-left: 20px;
     font-size: 17px;
     color: #CCCCCC;
     align-items: center;
@@ -321,4 +326,29 @@ title_2 {
     height: 150px;
     border-radius: 100px;
     border: 2px solid #887157;
+}
+
+.create{
+    padding-left: 80px;
+}
+
+.create img{
+    width:22px;
+    height: 22px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 65px;
+}
+.create div{
+    display: flex;
+}
+.create label{
+    margin-top: 60px;
+    margin-left: 30px;
+    position: absolute;
+}
+
+.register{
+    margin-top: 130px;
+    margin-left: 35px;
 }

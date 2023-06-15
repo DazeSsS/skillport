@@ -6,6 +6,7 @@ body {
     font-family: 'PT Serif', serif;
     font-size: 20px;
     background-color: #282323;
+    margin: 0;
 }
 a{
   color: #887157;
@@ -35,7 +36,7 @@ a{
   }
 .header {
   padding: 24px 0;
-  margin-bottom: 4px;
+  margin-bottom: 70px;
 }
   
 .header__inner {
@@ -48,9 +49,10 @@ a{
   }
     
 .user img {
-    width: 110px;
+    width: 282px;
     height: 110px;
-    height: 100%;
+    margin-top: 20px;
+    
 }
 .nav-links {
     padding: 20px;

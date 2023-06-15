@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="main__information">
-                    <img src="https://placehold.it/375x300" alt="" class="logo">
+                    <img src="/static/skillport/img/logo.jpg" alt="" class="logo">
                     <div class="main__content">
                         <h1>Ваш логин</h1>
                         {{ form.username }}
@@ -58,6 +58,11 @@
                         {{ person_form.links }}
                     </div>
                     <div class="create">
+                        <div>
+                            <img src="/static/skillport/img/upload.png">
+                            <label>Загрузите фото профиля</label>
+                        </div>
+                        
                         <div class="user__setting">
                             <!-- <img src="https://placehold.it/150x150" alt="" class="avatar"> -->
                             {{ person_form.profile_picture }}
