@@ -63,7 +63,14 @@ class CreateProjectForm(ModelForm):
 
         self.fields['title'].widget.attrs.update({'class': 'input title'})
         self.fields['description'].widget.attrs.update({'class': 'input description-input'})
-        self.fields['image'].widget.attrs.update({'class': 'input-button'})
+        self.fields['image'].widget.attrs.update({
+            'class': 'input-button',
+             'type': 'file', 
+            'name': 'profilePicture',
+            'id': 'imageUpload',
+            'onchange': 'previewImage(event)',
+            'accept': 'image/*'
+            })
         self.fields['content_type'].widget.attrs.update({'class': 'dropdown__menu'})
 
 

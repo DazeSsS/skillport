@@ -65,6 +65,9 @@ body {
 .main__picture{
     border: 2px dashed #887157;
     border-radius: 30px;
+    height: 400px;
+    width: 400px;
+    object-fit: scale-down;
 }
 
 .other__pictures{
