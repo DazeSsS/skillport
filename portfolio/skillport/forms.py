@@ -43,6 +43,13 @@ class CreatePersonForm(ModelForm):
         self.fields['specialization'].widget.attrs.update({'class': 'specialization'})
         self.fields['links'].widget.attrs.update({'class': 'links'})
         self.fields['about'].widget.attrs.update({'class': 'about'})
+        self.fields['profile_picture'].widget.attrs.update({
+            'type': 'file', 
+            'name': 'profilePicture',
+            'id': 'imageUpload',
+            'onchange': 'previewImage(event)',
+            'accept': 'image/*'
+        })
 
 
 class CreateProjectForm(ModelForm):

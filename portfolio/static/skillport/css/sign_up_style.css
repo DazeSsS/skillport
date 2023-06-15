@@ -64,6 +64,7 @@ body {
     margin-left: 45px;
     height: 300px;
     width: 375px;
+    object-fit: cover;
 }
 
 .main__content {

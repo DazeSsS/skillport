@@ -40,7 +40,7 @@ def register(request):
     device, person = check_guest(request)
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
-        person_form = CreatePersonForm(request.POST)
+        person_form = CreatePersonForm(request.POST, request.FILES)
         if form.is_valid() and person_form.is_valid():
             user = form.save()
             person.user = user
@@ -124,8 +124,9 @@ def profile_page(request):
 
 def another_profile_page(request, user_id):
     user = get_object_or_404(Person, pk=user_id)
-    if user == request.user.person:
-        return redirect('profile')
+    if not request.user.is_anonymous:
+        if user == request.user.person:
+            return redirect('profile')
     
     user_projects = Project.objects.filter(author=user).order_by('-date')
     try:
